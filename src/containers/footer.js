@@ -38,6 +38,11 @@ export function FooterContainer() {
       </Footer.Row>
       <Footer.Break />
       <Footer.Text>Netflix United Kingdom</Footer.Text>
+      <Footer.Break />
+      <Footer.Text style={{ marginTop: '20px', color: '#e50914', fontWeight: 'bold', fontSize: '12px' }}>
+        DISCLAIMER: This is a high-fidelity clone project built strictly for educational and portfolio purposes. 
+        It is NOT the official Netflix website and does not collect real user credentials.
+      </Footer.Text>
     </Footer>
   );
 }
