@@ -19,6 +19,12 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   margin-bottom: 40px;
+  position: relative;
+  z-index: 1;
+
+  &:hover {
+    z-index: 10;
+  }
 
   > ${Title} {
     @media (max-width: 1000px) {
@@ -40,7 +46,7 @@ export const Group = styled.div`
 
   > ${Container}:first-of-type {
     @media (min-width: 1100px) {
-      margin-top: 20px;
+      margin-top: -150px;
       z-index: 10;
     }
   }
@@ -68,7 +74,9 @@ export const Entities = styled.div`
   display: flex;
   flex-direction: row;
   overflow-x: scroll;
-  padding: 40px 56px;
+  overflow-y: visible;
+  padding: 60px 56px 220px 56px;
+  margin-bottom: -160px;
   scrollbar-width: none;
   
   &::-webkit-scrollbar {
@@ -76,19 +84,99 @@ export const Entities = styled.div`
   }
   
   @media (max-width: 1000px) {
-    padding: 20px 30px;
+    padding: 20px 30px 180px 30px;
+    margin-bottom: -140px;
   }
 `;
 
 export const Meta = styled.div`
   display: none;
   position: absolute;
-  bottom: 0;
+  top: 100%;
+  left: 0;
   padding: 15px;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+  background-color: #181818;
   width: 100%;
+  z-index: 10;
   border-bottom-left-radius: 6px;
   border-bottom-right-radius: 6px;
+  box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.5);
+`;
+
+export const Icon = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border: 1px solid #777;
+  border-radius: 50%;
+  color: white;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
+
+  &:hover {
+    border-color: white;
+  }
+
+  svg {
+    width: 16px;
+  }
+
+  ${({ $primary }) => $primary && `
+    background-color: white;
+    color: black;
+    border: none;
+    
+    &:hover {
+      background-color: #e6e6e6;
+    }
+  `}
+`;
+
+export const IconsContainer = styled.div`
+  display: flex;
+  margin-bottom: 15px;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+`;
+
+export const Badge = styled.span`
+  border: 1px solid #777;
+  padding: 1px 4px;
+  font-size: 11px;
+  border-radius: 2px;
+  margin-right: 8px;
+  color: #fff;
+`;
+
+export const MetaDataContainer = styled.div`
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #fff;
+`;
+
+export const TagContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  font-size: 12px;
+  color: #fff;
+`;
+
+export const Tag = styled.span`
+  display: flex;
+  align-items: center;
+  
+  &:not(:last-child):after {
+    content: '•';
+    margin: 0 6px;
+    color: #555;
+  }
 `;
 
 export const Image = styled.img`
@@ -100,7 +188,7 @@ export const Image = styled.img`
   padding: 0;
   margin: 0;
   border-radius: 6px;
-  transition: border-radius 0.3s;
+  transition: border-radius 0.3s, width 0.3s, height 0.3s;
 `;
 
 export const Item = styled.div`
@@ -110,11 +198,12 @@ export const Item = styled.div`
   position: relative;
   cursor: pointer;
   flex-shrink: 0;
-  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1), z-index 0.4s;
+  transition: transform 0.4s cubic-bezier(0.33, 1, 0.68, 1), z-index 0.4s, width 0.3s;
   
   ${({ $top10 }) => $top10 && `
     margin-left: 100px;
     margin-right: 25px;
+    width: 140px;
 
     ${Image} {
       width: 140px;
@@ -138,6 +227,20 @@ export const Item = styled.div`
       letter-spacing: -10px;
       user-select: none;
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      transition: opacity 0.3s;
+    }
+
+    &:hover {
+      width: 250px; /* Expand width on hover for Top 10 */
+
+      ${Image} {
+        width: 250px;
+        height: 140px; /* Horizontal aspect ratio */
+      }
+
+      .card-number {
+        opacity: 0.1; /* Fade out number on hover */
+      }
     }
   `}
 
@@ -148,7 +251,7 @@ export const Item = styled.div`
   `}
 
   &:hover {
-    transform: scale(1.15);
+    transform: scale(1.45);
     z-index: 99;
   }
 

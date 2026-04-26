@@ -16,6 +16,12 @@ import {
   Entities,
   Item,
   Image,
+  Icon,
+  IconsContainer,
+  Badge,
+  MetaDataContainer,
+  TagContainer,
+  Tag,
 } from './styles/card';
 
 export const FeatureContext = createContext();
@@ -100,4 +106,27 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
       </Content>
     </Feature>
   ) : null;
+};
+Card.Icons = function CardIcons({ children, ...restProps }) {
+  return <IconsContainer {...restProps}>{children}</IconsContainer>;
+};
+
+Card.Icon = function CardIcon({ children, ...restProps }) {
+  return <Icon {...restProps}>{children}</Icon>;
+};
+
+Card.Badge = function CardBadge({ children, ...restProps }) {
+  return <Badge {...restProps}>{children}</Badge>;
+};
+
+Card.MetaData = function CardMetaData({ children, ...restProps }) {
+  return <MetaDataContainer {...restProps}>{children}</MetaDataContainer>;
+};
+
+Card.Tags = function CardTags({ children, ...restProps }) {
+  return <TagContainer {...restProps}>{children}</TagContainer>;
+};
+
+Card.Tag = function CardTag({ children, ...restProps }) {
+  return <Tag {...restProps}>{children}</Tag>;
 };

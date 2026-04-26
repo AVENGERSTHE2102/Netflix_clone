@@ -4,21 +4,14 @@ import { Link as ReachRouterLink } from 'react-router-dom';
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
-  background-color: #000;
-  min-height: auto;
-`;
-
-export const Hero = styled.div`
-  display: flex;
-  flex-direction: column;
-  background: url(${({ src }) => (src ? `/images/misc/${src}.jpg` : '/images/misc/hero-pc.webp')}) center center / 100% 100% no-repeat;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  margin-top: 100px;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8)), 
+              url(${({ src, $isHero }) => (src ? `/images/misc/${src}.jpg` : ($isHero ? '/images/misc/hero-pc.webp' : '/images/misc/home-bg.jpg'))}) top left / cover no-repeat;
+  transition: background 0.5s ease;
+  min-height: 100vh;
 
   @media (max-width: 800px) {
-    background: url(${({ src }) => (src ? `/images/misc/${src}.jpg` : '/images/misc/hero-mobile.webp')}) center center / 100% 100% no-repeat;
-    aspect-ratio: 9 / 16;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8)), 
+                url(${({ src, $isHero }) => (src ? `/images/misc/${src}.jpg` : ($isHero ? '/images/misc/hero-mobile.webp' : '/images/misc/home-bg.jpg'))}) top left / cover no-repeat;
   }
 
   @media (max-width: 1100px) {
@@ -68,89 +61,9 @@ export const Link = styled.p`
   }
 `;
 
-export const Hamburger = styled.div`
-  display: none;
-  flex-direction: column;
-  justify-content: space-around;
-  width: 24px;
-  height: 18px;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  z-index: 2000;
-
-  @media (max-width: 800px) {
-    display: flex;
-  }
-
-  span {
-    width: 24px;
-    height: 2px;
-    background: #fff;
-    border-radius: 10px;
-    transition: all 0.3s linear;
-    position: relative;
-    transform-origin: 1px;
-
-    &:first-of-type {
-      transform: ${({ $open }) => ($open ? 'rotate(45deg)' : 'rotate(0)')};
-    }
-
-    &:nth-of-type(2) {
-      opacity: ${({ $open }) => ($open ? '0' : '1')};
-      transform: ${({ $open }) => ($open ? 'translateX(20px)' : 'translateX(0)')};
-    }
-
-    &:last-of-type {
-      transform: ${({ $open }) => ($open ? 'rotate(-45deg)' : 'rotate(0)')};
-    }
-  }
-`;
-
-export const MobileNav = styled.div`
-  display: none;
-
-  @media (max-width: 800px) {
-    display: flex;
-    flex-direction: column;
-    background-color: #000;
-    position: fixed;
-    top: 0;
-    right: 0;
-    height: 100vh;
-    width: 60%;
-    padding: 100px 30px;
-    z-index: 1500;
-    transform: ${({ $open }) => ($open ? 'translateX(0)' : 'translateX(100%)')};
-    transition: transform 0.3s ease-in-out;
-    border-left: 1px solid #333;
-
-    ${Link} {
-      display: flex !important;
-      margin: 0;
-      padding: 20px;
-      font-size: 18px;
-      border-bottom: 1px solid #222;
-      width: 100%;
-      justify-content: flex-start;
-
-      &:hover {
-        background-color: #111;
-      }
-    }
-  }
-`;
-
 export const Group = styled.div`
   display: flex;
   align-items: center;
-
-  @media (max-width: 800px) {
-    ${Link} {
-      display: none;
-    }
-  }
 `;
 
 export const SearchInput = styled.input`
