@@ -15,7 +15,7 @@ export function SelectProfileContainer({ setProfile }) {
     <>
       <Header bg={false}>
         <Header.Frame $fixed={false} $justify="center" $height="100px">
-          <Header.Logo to={ROUTES.HOME} src="/complix-brand.png" alt="Complix" $height="60px" />
+          <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="60px" />
         </Header.Frame>
       </Header>
 

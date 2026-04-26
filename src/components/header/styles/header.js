@@ -12,8 +12,17 @@ export const Background = styled.div`
   position: relative;
   background: #000;
   width: 100%;
-  aspect-ratio: 16 / 9;
-  overflow: hidden;
+  ${({ $isHero }) => ($isHero ? 'aspect-ratio: 16 / 9;' : 'min-height: 100vh;')}
+  overflow: ${({ $isHero }) => ($isHero ? 'hidden' : 'visible')};
+  background: ${({ src }) => (src ? `url(/images/misc/${src}${src.includes('.') ? '' : '.webp'}) top left / cover no-repeat` : 'black')};
+  
+  @media (max-width: 600px) {
+    background: ${({ src }) => {
+      if (!src) return 'black';
+      const mobileSrc = src === 'hero-pc' ? 'hero-mobile' : src;
+      return `url(/images/misc/${mobileSrc}${mobileSrc.includes('.') ? '' : '.webp'}) top left / cover no-repeat`;
+    }};
+  }
   transition: background 0.5s ease;
 
   &::before {
@@ -26,6 +35,7 @@ export const Background = styled.div`
     background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.7) 100%),
                 linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
     z-index: 2;
+    pointer-events: none;
   }
 `;
 

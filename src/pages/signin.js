@@ -20,14 +20,14 @@ export default function SignIn() {
     event.preventDefault();
 
     localStorage.setItem('authUser', JSON.stringify({ displayName: 'Guest', photoURL: '1' }));
-    window.location.href = ROUTES.BROWSE;
+    history.push(ROUTES.BROWSE);
     return Promise.resolve();
   };
 
   return (
     <>
       <HeaderContainer>
-        <Form>
+        <Form translate="no">
           <Form.Title>Sign In</Form.Title>
           {error && <Form.Error data-testid="error">{error}</Form.Error>}
 

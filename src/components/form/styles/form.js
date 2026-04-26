@@ -10,8 +10,18 @@ export const Container = styled.div`
   border-radius: 5px;
   width: 100%;
   max-width: 450px;
+  position: relative;
+  z-index: 10;
   padding: 60px 53px 40px;
   margin: 10px auto 100px;
+
+  @media (max-width: 600px) {
+    padding: 30px 20px;
+    max-width: none;
+    min-height: auto;
+    margin: 0;
+    background-color: #000;
+  }
 `;
 
 export const Error = styled.div`

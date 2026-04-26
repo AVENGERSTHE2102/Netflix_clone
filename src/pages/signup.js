@@ -15,6 +15,10 @@ const LogoContainer = styled.div`
 const MainLogo = styled.img`
   height: 220px;
   width: auto;
+
+  @media (max-width: 600px) {
+    height: 100px;
+  }
 `;
 
 const VideoContainer = styled.div`
@@ -60,19 +64,36 @@ export default function SignUp() {
   };
 
   const handleVideoEnd = () => {
-    window.location.href = ROUTES.BROWSE;
+    history.push(ROUTES.BROWSE);
   };
 
   return (
     <>
       {showVideo && (
         <VideoContainer>
-          <FullVideo autoPlay onEnded={handleVideoEnd} playsInline>
+          <FullVideo autoPlay muted onEnded={handleVideoEnd} playsInline>
             <source src="/videos/hori.webm" type="video/webm" media="(min-width: 800px)" />
             <source src="/videos/verti.webm" type="video/webm" media="(max-width: 799px)" />
             <source src="/videos/hori.mp4" type="video/mp4" media="(min-width: 800px)" />
             <source src="/videos/verti.mp4" type="video/mp4" media="(max-width: 799px)" />
           </FullVideo>
+          <div 
+            onClick={handleVideoEnd}
+            style={{
+              position: 'absolute',
+              bottom: '40px',
+              right: '40px',
+              color: 'white',
+              border: '1px solid white',
+              padding: '8px 20px',
+              borderRadius: '4px',
+              cursor: 'pointer',
+              zIndex: 10000,
+              background: 'rgba(0,0,0,0.5)'
+            }}
+          >
+            Skip Intro
+          </div>
         </VideoContainer>
       )}
 
@@ -90,11 +111,11 @@ export default function SignUp() {
         <img src="/images/users/5.png" alt="" />
       </div>
 
-      <Header>
+      <Header src="hero-pc">
         <LogoContainer>
-          <MainLogo src="/complix-brand.png" alt="Complix" />
+          <MainLogo src="/images/logo.png" alt="Complix" />
         </LogoContainer>
-        <Form>
+        <Form translate="no">
           <Form.Title>Sign Up</Form.Title>
           {error && <Form.Error>{error}</Form.Error>}
 

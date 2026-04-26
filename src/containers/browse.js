@@ -44,7 +44,7 @@ export function BrowseContainer({ slides }) {
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
             <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
-            <Header.Logo to={ROUTES.HOME} src="/complix-brand.png" alt="Complix" $height="80px" />
+            <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="80px" />
             <Header.Group $hideMobile>
               <Header.TextLink active="true" onClick={() => setCategory('series')}>
                 Home

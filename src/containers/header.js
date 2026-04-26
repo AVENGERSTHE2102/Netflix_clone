@@ -6,7 +6,7 @@ export function HeaderContainer({ children }) {
   return (
     <Header>
       <Header.Frame>
-        <Header.Logo to={ROUTES.HOME} src="/complix-brand.png" alt="Complix" />
+        <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" />
       </Header.Frame>
       {children}
     </Header>
