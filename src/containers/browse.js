@@ -12,6 +12,7 @@ export function BrowseContainer({ slides }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const user = JSON.parse(localStorage.getItem('authUser')) || {};
 
@@ -39,23 +40,36 @@ export function BrowseContainer({ slides }) {
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
 
       <Header $isHero={true} $dontShowOnSmallViewPort>
+        <Header.Video src="/videos/hero.mp4" poster="/images/misc/hero-pc.webp" />
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
-            <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="80px" />
-            <Header.TextLink active="true" onClick={() => setCategory('series')}>
-              Home
-            </Header.TextLink>
-            <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
-              Shows
-            </Header.TextLink>
-            <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
-              Movies
-            </Header.TextLink>
-            <Header.TextLink active="false">Games</Header.TextLink>
-            <Header.TextLink active="false">New & Popular</Header.TextLink>
-            <Header.TextLink active="false">My List</Header.TextLink>
-
+            <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
+            <Header.Logo to={ROUTES.HOME} src="/complix-brand.png" alt="Complix" $height="80px" />
+            <Header.Group $hideMobile>
+              <Header.TextLink active="true" onClick={() => setCategory('series')}>
+                Home
+              </Header.TextLink>
+              <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
+                Shows
+              </Header.TextLink>
+              <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
+                Movies
+              </Header.TextLink>
+              <Header.TextLink active="false">Games</Header.TextLink>
+              <Header.TextLink active="false">New & Popular</Header.TextLink>
+              <Header.TextLink active="false">My List</Header.TextLink>
+            </Header.Group>
           </Header.Group>
+          
+          <Header.MobileMenu open={menuOpen}>
+            <Header.TextLink active="true" onClick={() => { setCategory('series'); setMenuOpen(false); }}>Home</Header.TextLink>
+            <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => { setCategory('series'); setMenuOpen(false); }}>Shows</Header.TextLink>
+            <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => { setCategory('films'); setMenuOpen(false); }}>Movies</Header.TextLink>
+            <Header.TextLink onClick={() => setMenuOpen(false)}>Games</Header.TextLink>
+            <Header.TextLink onClick={() => setMenuOpen(false)}>New & Popular</Header.TextLink>
+            <Header.TextLink onClick={() => setMenuOpen(false)}>My List</Header.TextLink>
+          </Header.MobileMenu>
+
           <Header.Group>
             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
             <Header.Profile>

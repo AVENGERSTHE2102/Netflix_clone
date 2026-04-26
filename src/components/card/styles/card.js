@@ -18,7 +18,7 @@ export const Title = styled.p`
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  margin-bottom: 40px;
+  margin-bottom: 25px;
   position: relative;
   z-index: 1;
 
@@ -42,7 +42,7 @@ export const Group = styled.div`
   flex-direction: ${({ flexDirection }) => (flexDirection === 'row' ? 'row' : 'column')};
   ${({ alignItems }) => alignItems && `align-items: ${alignItems}`};
   ${({ margin }) => margin && `margin: ${margin}`};
-  padding-bottom: 50px;
+  padding-bottom: 20px;
 
   > ${Container}:first-of-type {
     @media (min-width: 1100px) {

@@ -1,23 +1,56 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Link as ReachRouterLink } from 'react-router-dom';
+
+const zoomIn = keyframes`
+  from { transform: scale(1); }
+  to { transform: scale(1.05); }
+`;
 
 export const Background = styled.div`
   display: flex;
   flex-direction: column;
-  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8)), 
-              url(${({ src, $isHero }) => (src ? `/images/misc/${src}.jpg` : ($isHero ? '/images/misc/hero-pc.webp' : '/images/misc/home-bg.jpg'))}) top left / cover no-repeat;
+  position: relative;
+  background: #000;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
   transition: background 0.5s ease;
-  min-height: 100vh;
 
-  @media (max-width: 800px) {
-    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0) 50%, rgba(0, 0, 0, 0.8)), 
-                url(${({ src, $isHero }) => (src ? `/images/misc/${src}.jpg` : ($isHero ? '/images/misc/hero-mobile.webp' : '/images/misc/home-bg.jpg'))}) top left / cover no-repeat;
-  }
-
-  @media (max-width: 1100px) {
-    ${({ $dontShowOnSmallViewPort }) => $dontShowOnSmallViewPort && `background-position: center center;`}
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.9) 0%, rgba(0, 0, 0, 0.2) 60%, rgba(0, 0, 0, 0.7) 100%),
+                linear-gradient(to right, rgba(0, 0, 0, 0.6) 0%, transparent 40%);
+    z-index: 2;
   }
 `;
+
+export const ImageBackground = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: url(${({ src }) => src}) center center / cover no-repeat;
+  animation: ${zoomIn} 20s infinite alternate ease-in-out;
+  z-index: 1;
+`;
+
+export const Video = styled.video`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  animation: ${zoomIn} 25s infinite alternate ease-in-out;
+  z-index: 1;
+`;
+
 
 export const Container = styled.div`
   display: flex;
@@ -64,6 +97,75 @@ export const Link = styled.p`
 export const Group = styled.div`
   display: flex;
   align-items: center;
+
+  @media (max-width: 800px) {
+    ${({ $hideMobile }) => $hideMobile && 'display: none;'}
+  }
+`;
+
+export const Hamburger = styled.div`
+  display: none;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  z-index: 2000;
+  margin-right: 20px;
+
+  span {
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    border-radius: 10px;
+    transition: all 0.3s linear;
+    position: relative;
+    transform-origin: 1px;
+
+    &:first-child {
+      transform: ${({ $open }) => ($open ? 'rotate(45deg)' : 'rotate(0)')};
+    }
+
+    &:nth-child(2) {
+      opacity: ${({ $open }) => ($open ? '0' : '1')};
+      transform: ${({ $open }) => ($open ? 'translateX(20px)' : 'translateX(0)')};
+    }
+
+    &:nth-child(3) {
+      transform: ${({ $open }) => ($open ? 'rotate(-45deg)' : 'rotate(0)')};
+    }
+  }
+
+  @media (max-width: 800px) {
+    display: flex;
+  }
+`;
+
+export const MobileMenu = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 280px;
+  height: 100vh;
+  background: #141414;
+  z-index: 1500;
+  padding-top: 80px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s cubic-bezier(0.645, 0.045, 0.355, 1);
+  transform: ${({ $open }) => ($open ? 'translateX(0)' : 'translateX(-100%)')};
+  box-shadow: 2px 0 10px rgba(0, 0, 0, 0.5);
+
+  p {
+    padding: 20px 30px;
+    font-size: 18px;
+    margin: 0;
+    border-bottom: 1px solid #333;
+
+    &:last-of-type {
+      border-bottom: none;
+    }
+  }
 `;
 
 export const SearchInput = styled.input`
@@ -197,13 +299,15 @@ export const Profile = styled.div`
 `;
 
 export const Feature = styled.div`
-  padding: 100px 56px;
+  padding: 150px 56px 50px 56px;
   flex-direction: column;
   align-items: normal;
   width: 50%;
+  position: relative;
+  z-index: 5;
 
   @media (max-width: 1100px) {
-    width: 70%;
+    width: 75%;
     padding: 120px 30px 100px 30px;
   }
 `;

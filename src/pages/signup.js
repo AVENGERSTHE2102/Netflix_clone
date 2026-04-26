@@ -92,7 +92,7 @@ export default function SignUp() {
 
       <Header>
         <LogoContainer>
-          <MainLogo src="/images/logo.png" alt="Complix" />
+          <MainLogo src="/complix-brand.png" alt="Complix" />
         </LogoContainer>
         <Form>
           <Form.Title>Sign Up</Form.Title>

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Container = styled.section`
   position: relative;
-  height: 500px;
+  height: 280px;
   width: 100%;
   overflow: hidden;
   background-color: #000;
@@ -10,9 +10,9 @@ export const Container = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin: 60px 0;
-  border-top: 1px solid #222;
-  border-bottom: 1px solid #222;
+  margin: 0 0 30px 0;
+  border-top: 1px solid #111;
+  border-bottom: 1px solid #111;
 `;
 
 export const Background = styled.div.attrs(props => ({
@@ -57,7 +57,7 @@ export const Content = styled.div`
 
 export const Title = styled.h2`
   font-size: 2.2rem;
-  margin-bottom: 2.5rem;
+  margin-bottom: 1.5rem;
   font-weight: 700;
   letter-spacing: 1px;
   color: #fff;
@@ -90,7 +90,7 @@ export const TimerUnit = styled.div`
 `;
 
 export const Number = styled.span`
-  font-size: 5.5rem;
+  font-size: 4.5rem;
   font-weight: 900;
   font-family: 'Netflix Sans', sans-serif;
   line-height: 1;

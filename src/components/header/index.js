@@ -4,6 +4,8 @@ import {
   Container,
   Group,
   Background,
+  ImageBackground,
+  Video,
   Dropdown,
   Picture,
   Link,
@@ -18,9 +20,11 @@ import {
   Text,
   Feature,
   Logo,
+  Hamburger,
+  MobileMenu,
 } from './styles/header';
 
-export default function Header({ bg = true, children, ...restProps }) {
+export default function Header({ bg = true, src, children, ...restProps }) {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -33,12 +37,31 @@ export default function Header({ bg = true, children, ...restProps }) {
 
   return bg ? (
     <Background {...restProps} data-testid="header-bg">
+      {src && <ImageBackground src={src.includes('/') ? src : `/images/misc/${src}.jpg`} />}
       {children}
     </Background>
   ) : (
     children
   );
 }
+
+Header.Video = function HeaderVideo({ src, mobileSrc, poster, ...restProps }) {
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+
+  React.useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  const videoSrc = isMobile && mobileSrc ? mobileSrc : src;
+
+  return (
+    <Video autoPlay muted loop playsInline poster={poster} key={videoSrc} {...restProps}>
+      <source src={videoSrc} type="video/mp4" />
+    </Video>
+  );
+};
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
   const [scrolled, setScrolled] = useState(false);
@@ -120,7 +143,7 @@ Header.MoreInfoButton = function HeaderMoreInfoButton({ children, ...restProps }
   return (
     <MoreInfoButton {...restProps}>
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM11 7V9H13V7H11ZM11 11V17H13V11H11Z" fill="currentColor"/>
+        <path fillRule="evenodd" clipRule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM11 7V9H13V7H11ZM11 11V17H13V11H11Z" fill="currentColor"/>
       </svg>
       {children}
     </MoreInfoButton>
@@ -129,6 +152,20 @@ Header.MoreInfoButton = function HeaderMoreInfoButton({ children, ...restProps }
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
+};
+
+Header.Hamburger = function HeaderHamburger({ open, setOpen, ...restProps }) {
+  return (
+    <Hamburger $open={open} onClick={() => setOpen(!open)} {...restProps}>
+      <span />
+      <span />
+      <span />
+    </Hamburger>
+  );
+};
+
+Header.MobileMenu = function HeaderMobileMenu({ open, children, ...restProps }) {
+  return <MobileMenu $open={open} {...restProps}>{children}</MobileMenu>;
 };
 
 Header.Text = function HeaderText({ children, ...restProps }) {
