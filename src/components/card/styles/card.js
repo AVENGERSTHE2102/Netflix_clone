@@ -274,71 +274,215 @@ export const FeatureText = styled.p`
   }
 `;
 
-export const Feature = styled.div`
-  display: flex;
-  flex-direction: row;
-  background: url(${({ src }) => src});
-  background-size: contain;
-  position: relative;
-  height: 360px;
-  background-position-x: right;
-  background-repeat: no-repeat;
-  background-color: black;
-
-  @media (max-width: 1000px) {
-    height: auto;
-    background-size: auto;
-
-    ${Title} {
-      font-size: 20px;
-      line-height: 20px;
-      margin-bottom: 10px;
-    }
-    ${FeatureText} {
-      font-size: 14px;
-    }
-  }
-`;
-
 export const FeatureTitle = styled(Title)`
   margin-left: 0;
 `;
+export const FeatureBackdrop = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 9998;
+`;
+
+export const Feature = styled.div`
+  position: fixed;
+  top: 30px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  max-width: 850px;
+  max-height: calc(100vh - 60px);
+  background-color: #181818;
+  z-index: 9999;
+  border-radius: 10px;
+  box-shadow: 0px 0px 30px rgba(0,0,0,0.8);
+  overflow-y: scroll;
+  overflow-x: hidden;
+  scrollbar-width: none;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+`;
+
+export const FeatureHero = styled.div`
+  position: relative;
+  width: 100%;
+  height: 480px;
+  background: url(${({ src }) => src}) center top / cover no-repeat;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px;
+    background: linear-gradient(to top, #181818, transparent);
+  }
+`;
+
+export const FeatureHeroControls = styled.div`
+  position: absolute;
+  bottom: 40px;
+  left: 40px;
+  display: flex;
+  align-items: center;
+  z-index: 2;
+  width: calc(100% - 80px);
+`;
+
+export const PlayButton = styled.button`
+  box-shadow: 0 0.6vw 1vw -0.4vw rgba(0, 0, 0, 0.35);
+  background-color: white;
+  color: black;
+  border-width: 0;
+  padding: 10px 20px;
+  border-radius: 5px;
+  font-weight: bold;
+  font-size: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+  display: flex;
+  align-items: center;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.7);
+  }
+  
+  svg {
+    width: 24px;
+    margin-right: 10px;
+  }
+`;
+
+export const FeatureInfoWrapper = styled.div`
+  display: flex;
+  padding: 0 40px 40px 40px;
+  gap: 30px;
+  
+  @media (max-width: 800px) {
+    flex-direction: column;
+  }
+`;
+
+export const FeatureInfoLeft = styled.div`
+  flex: 2;
+`;
+
+export const FeatureInfoRight = styled.div`
+  flex: 1;
+  font-size: 14px;
+  color: white;
+  line-height: 1.6;
+  
+  span {
+    color: #777;
+  }
+`;
 
 export const FeatureClose = styled.button`
-  color: white;
   position: absolute;
-  right: 20px;
   top: 20px;
-  cursor: pointer;
-  background-color: transparent;
+  right: 20px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: #181818;
   border: 0;
+  color: white;
+  cursor: pointer;
+  z-index: 10;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
   img {
     filter: brightness(0) invert(1);
-    width: 24px;
+    width: 16px;
   }
 `;
 
-export const Content = styled.div`
-  margin: 56px;
-  max-width: 500px;
-  line-height: normal;
+export const EpisodeContainer = styled.div`
+  padding: 0 40px 40px 40px;
+`;
 
-  @media (max-width: 1000px) {
-    margin: 30px;
-    max-width: none;
+export const EpisodeHeader = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  
+  h3 {
+    color: white;
+    font-size: 24px;
+    margin: 0;
+  }
+  
+  span {
+    color: #fff;
+    font-size: 18px;
   }
 `;
 
-export const Maturity = styled.div`
-  background-color: ${({ rating }) => (rating >= 15 ? '#f44336' : '#2f9600')};
-  border-radius: 15px;
-  width: 28px;
-  line-height: 28px;
-  text-align: center;
-  color: white;
-  font-weight: bold;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
-  margin-right: 10px;
-  font-size: 12px;
+export const EpisodeRow = styled.div`
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid #404040;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+  
+  &:hover {
+    background-color: #333;
+  }
+`;
+
+export const EpisodeIndex = styled.div`
+  font-size: 24px;
+  color: #d2d2d2;
+  width: 40px;
+  flex-shrink: 0;
+`;
+
+export const EpisodeImage = styled.div`
+  width: 130px;
+  height: 73px;
+  background: url(${({ src }) => src}) center / cover;
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-right: 15px;
+`;
+
+export const EpisodeDetails = styled.div`
+  flex: 1;
+`;
+
+export const EpisodeTitleRow = styled.div`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  
+  h4 {
+    color: white;
+    margin: 0;
+    font-size: 16px;
+  }
+  
+  span {
+    color: white;
+  }
+`;
+
+export const EpisodeDesc = styled.p`
+  color: #d2d2d2;
+  font-size: 14px;
+  margin: 0;
+  line-height: 1.4;
 `;

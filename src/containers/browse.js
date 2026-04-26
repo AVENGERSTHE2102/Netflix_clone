@@ -82,8 +82,8 @@ export function BrowseContainer({ slides }) {
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
             <Card.Entities>
-              {slideItem.data.map((item, index) => (
-                <Card.Item key={item.docId} item={item} index={slideItem.title.includes('Top 10') ? index : undefined} $top10={slideItem.title.includes('Top 10')}>
+              {Array(5).fill(slideItem.data).flat().map((item, index) => (
+                <Card.Item key={`${item.docId}-${index}`} item={item} index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} $top10={slideItem.title.includes('Top 10')}>
                   <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/${slideItem.title.includes('Top 10') ? 'large' : 'small'}.jpg`} />
                   <Card.Meta>
                     <Card.Icons>
@@ -117,12 +117,11 @@ export function BrowseContainer({ slides }) {
                 </Card.Item>
               ))}
             </Card.Entities>
-            <Card.Feature category={category}>
-              <Player>
-                <Player.Button />
+            <Player>
+              <Card.Feature category={category}>
                 <Player.Video src="/videos/bunny.mp4" />
-              </Player>
-            </Card.Feature>
+              </Card.Feature>
+            </Player>
           </Card>
         ))}
       </Card.Group>
