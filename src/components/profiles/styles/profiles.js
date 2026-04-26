@@ -7,14 +7,20 @@ export const Container = styled.div`
   align-items: center;
   margin: auto;
   max-width: 80%;
+  min-height: 100vh;
 `;
 
 export const Title = styled.h1`
   width: 100%;
   color: #fff;
-  font-size: 48px;
+  font-size: 3.5vw;
   text-align: center;
   font-weight: 500;
+  margin-bottom: 2rem;
+
+  @media (max-width: 800px) {
+    font-size: 32px;
+  }
 `;
 
 export const List = styled.ul`
@@ -22,41 +28,48 @@ export const List = styled.ul`
   margin: 0;
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
 `;
 
 export const Name = styled.p`
   color: #808080;
   text-overflow: ellipsis;
-  font-size: 16px;
+  font-size: 1.3vw;
+  margin-top: 15px;
+  transition: color 0.3s;
 
-  &:hover {
-    font-weight: bold;
-    color: #e5e5e5;
+  @media (max-width: 800px) {
+    font-size: 16px;
   }
 `;
 
 export const Picture = styled.img`
-  width: 100%;
-  max-width: 150px;
-  height: auto;
-  border: 3px solid black;
+  width: 10vw;
+  max-width: 200px;
+  min-width: 80px;
+  height: 10vw;
+  max-height: 200px;
+  min-height: 80px;
+  border-radius: 4px;
+  border: 4px solid transparent;
   cursor: pointer;
+  transition: border 0.3s, transform 0.3s;
 `;
 
 export const Item = styled.li`
-  max-height: 200px;
-  max-width: 200px;
   list-style-type: none;
   text-align: center;
-  margin-right: 30px;
+  margin-right: 2vw;
+  cursor: pointer;
 
   &:hover > ${Picture} {
-    border: 3px solid white;
+    border: 4px solid #fff;
+    transform: scale(1.05);
   }
 
   &:hover ${Name} {
-    font-weight: bold;
-    color: white;
+    color: #fff;
   }
 
   &:last-of-type {

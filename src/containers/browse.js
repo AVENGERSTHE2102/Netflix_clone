@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from 'react';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player } from '../components';
 import * as ROUTES from '../constants/routes';
-import logo from '../logo.svg';
 
 import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
@@ -19,7 +18,7 @@ export function BrowseContainer({ slides }) {
   useEffect(() => {
     setTimeout(() => {
       setLoading(false);
-    }, 3000);
+    }, 4000);
   }, [profile.displayName]);
 
   useEffect(() => {
@@ -42,15 +41,22 @@ export function BrowseContainer({ slides }) {
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
 
       <Header src="joker1" $dontShowOnSmallViewPort>
-        <Header.Frame>
+        <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
-            <Header.Logo to={ROUTES.HOME} src={logo} alt="Netflix" />
+            <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="80px" />
+            <Header.TextLink active="true" onClick={() => setCategory('series')}>
+              Home
+            </Header.TextLink>
             <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => setCategory('series')}>
-              Series
+              Shows
             </Header.TextLink>
             <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => setCategory('films')}>
-              Films
+              Movies
             </Header.TextLink>
+            <Header.TextLink active="false">Games</Header.TextLink>
+            <Header.TextLink active="false">New & Popular</Header.TextLink>
+            <Header.TextLink active="false">My List</Header.TextLink>
+            <Header.TextLink active="false">Browse by Languages</Header.TextLink>
           </Header.Group>
           <Header.Group>
             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
@@ -76,7 +82,10 @@ export function BrowseContainer({ slides }) {
             City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
             futile attempt to feel like he's part of the world around him.
           </Header.Text>
-          <Header.PlayButton>Play</Header.PlayButton>
+          <Header.Group>
+            <Header.PlayButton>Play</Header.PlayButton>
+            <Header.MoreInfoButton>More Info</Header.MoreInfoButton>
+          </Header.Group>
         </Header.Feature>
       </Header>
 
@@ -85,9 +94,9 @@ export function BrowseContainer({ slides }) {
           <Card key={`${category}-${slideItem.title.toLowerCase()}`}>
             <Card.Title>{slideItem.title}</Card.Title>
             <Card.Entities>
-              {slideItem.data.map((item) => (
-                <Card.Item key={item.docId} item={item}>
-                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/small.jpg`} />
+              {slideItem.data.map((item, index) => (
+                <Card.Item key={item.docId} item={item} index={slideItem.title.includes('Top 10') ? index : undefined} $top10={slideItem.title.includes('Top 10')}>
+                  <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/${slideItem.title.includes('Top 10') ? 'large' : 'small'}.jpg`} />
                   <Card.Meta>
                     <Card.SubTitle>{item.title}</Card.SubTitle>
                     <Card.Text>{item.description}</Card.Text>

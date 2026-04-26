@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link as ReachRouterLink } from 'react-router-dom';
 import {
   Container,
@@ -14,14 +14,25 @@ import {
   SearchInput,
   ButtonLink,
   PlayButton,
+  MoreInfoButton,
   Text,
   Feature,
   Logo,
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
   return bg ? (
-    <Background data-testid="header-bg" {...restProps}>
+    <Background {...restProps} data-testid="header-bg">
       {children}
     </Background>
   ) : (
@@ -30,7 +41,17 @@ export default function Header({ bg = true, children, ...restProps }) {
 }
 
 Header.Frame = function HeaderFrame({ children, ...restProps }) {
-  return <Container {...restProps}>{children}</Container>;
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  return <Container $scrolled={scrolled} {...restProps}>{children}</Container>;
 };
 
 Header.Group = function HeaderGroup({ children, ...restProps }) {
@@ -85,7 +106,25 @@ Header.TextLink = function HeaderTextLink({ active, children, ...restProps }) {
 };
 
 Header.PlayButton = function HeaderPlayButton({ children, ...restProps }) {
-  return <PlayButton {...restProps}>{children}</PlayButton>;
+  return (
+    <PlayButton {...restProps}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" style={{ marginRight: '10px' }}>
+        <path d="M5 3L19 12L5 21V3Z" />
+      </svg>
+      {children}
+    </PlayButton>
+  );
+};
+
+Header.MoreInfoButton = function HeaderMoreInfoButton({ children, ...restProps }) {
+  return (
+    <MoreInfoButton {...restProps}>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2ZM12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4ZM11 7V9H13V7H11ZM11 11V17H13V11H11Z" fill="currentColor"/>
+      </svg>
+      {children}
+    </MoreInfoButton>
+  );
 };
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {

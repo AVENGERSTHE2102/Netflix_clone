@@ -1,17 +1,26 @@
 import React from 'react';
-import { BrowserRouter as Router, Route } from 'react-router-dom';
-import { Browse } from './pages';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Browse, SignUp } from './pages';
+import * as ROUTES from './constants/routes';
+import { IsUserRedirect, ProtectedRoute } from './helpers/routes';
 import { useAuthListener } from './hooks';
 
 export function App() {
-  // Keeps the offline mock user securely bootstrapped in memory
-  useAuthListener();
+  const { user } = useAuthListener();
 
   return (
     <Router>
-      <Route path="/">
-        <Browse />
-      </Route>
+      <Switch>
+        <Route path={ROUTES.SIGN_UP}>
+          <SignUp />
+        </Route>
+        <ProtectedRoute user={user} path={ROUTES.BROWSE}>
+          <Browse />
+        </ProtectedRoute>
+        <Route exact path={ROUTES.HOME}>
+          <SignUp />
+        </Route>
+      </Switch>
     </Router>
   );
 }

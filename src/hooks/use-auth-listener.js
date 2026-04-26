@@ -2,22 +2,17 @@ import { useState, useEffect } from 'react';
 
 export default function useAuthListener() {
   const [user, setUser] = useState(() => {
-    const authUser = JSON.parse(localStorage.getItem('authUser'));
-    if (!authUser) {
-      const defaultUser = { displayName: 'Guest', photoURL: '1' };
-      localStorage.setItem('authUser', JSON.stringify(defaultUser));
-      return defaultUser;
+    // Only clear on refresh if we are at the root (start always)
+    if (window.location.pathname === '/') {
+      localStorage.removeItem('authUser');
+      return null;
     }
-    return authUser;
+    return JSON.parse(localStorage.getItem('authUser'));
   });
 
   useEffect(() => {
     const listener = () => {
-      let authUser = JSON.parse(localStorage.getItem('authUser'));
-      if (!authUser) {
-        authUser = { displayName: 'Guest', photoURL: '1' };
-        localStorage.setItem('authUser', JSON.stringify(authUser));
-      }
+      const authUser = JSON.parse(localStorage.getItem('authUser'));
       setUser(authUser);
     };
     

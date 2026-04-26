@@ -5,13 +5,13 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   min-height: 660px;
-  background-color: rgba(0, 0, 0, 0.75);
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(10px);
   border-radius: 5px;
   width: 100%;
-  margin: auto;
   max-width: 450px;
-  padding: 60px 68px 40px;
-  margin-bottom: 100px;
+  padding: 60px 53px 40px;
+  margin: 10px auto 100px;
 `;
 
 export const Error = styled.div`

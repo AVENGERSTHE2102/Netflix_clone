@@ -1,19 +1,49 @@
-import React, { useState, useContext } from 'react';
+import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import styled from 'styled-components';
 
-import { Form } from '../components';
-import { HeaderContainer } from '../containers/header';
+import { Form, Header } from '../components';
 import { FooterContainer } from '../containers/footer';
 import * as ROUTES from '../constants/routes';
 
+const LogoContainer = styled.div`
+  display: flex;
+  justify-content: center;
+  padding: 25px 0 0;
+`;
+
+const MainLogo = styled.img`
+  height: 220px;
+  width: auto;
+`;
+
+const VideoContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: black;
+  z-index: 9999;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
+
+const FullVideo = styled.video`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`;
+
 export default function SignUp() {
   const history = useHistory();
-
 
   const [firstName, setFirstName] = useState('');
   const [emailAddress, setEmailAddress] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
+  const [showVideo, setShowVideo] = useState(false);
 
   const isInvalid = firstName === '' || password === '' || emailAddress === '';
 
@@ -21,13 +51,36 @@ export default function SignUp() {
     event.preventDefault();
 
     localStorage.setItem('authUser', JSON.stringify({ displayName: firstName, photoURL: Math.floor(Math.random() * 5) + 1 }));
+    setShowVideo(true);
+  };
+
+  const handleVideoEnd = () => {
     window.location.href = ROUTES.BROWSE;
-    return Promise.resolve();
   };
 
   return (
     <>
-      <HeaderContainer>
+      {showVideo && (
+        <VideoContainer>
+          <FullVideo autoPlay onEnded={handleVideoEnd} playsInline>
+            <source src="/videos/hori.webm" type="video/webm" media="(min-width: 800px)" />
+            <source src="/videos/verti.webm" type="video/webm" media="(max-width: 799px)" />
+            <source src="/videos/hori.mp4" type="video/mp4" media="(min-width: 800px)" />
+            <source src="/videos/verti.mp4" type="video/mp4" media="(max-width: 799px)" />
+          </FullVideo>
+        </VideoContainer>
+      )}
+
+      {/* Background preloading */}
+      <div style={{ display: 'none' }}>
+        <video preload="auto" src="/videos/hori.webm" />
+        <video preload="auto" src="/videos/verti.webm" />
+      </div>
+
+      <Header>
+        <LogoContainer>
+          <MainLogo src="/images/logo.png" alt="Complix" />
+        </LogoContainer>
         <Form>
           <Form.Title>Sign Up</Form.Title>
           {error && <Form.Error>{error}</Form.Error>}
@@ -56,13 +109,13 @@ export default function SignUp() {
           </Form.Base>
 
           <Form.Text>
-            Already a user? <Form.Link to="/signin">Sign in now.</Form.Link>
+            Create an account to get started.
           </Form.Text>
           <Form.TextSmall>
             This page is protected by Google reCAPTCHA to ensure you're not a bot. Learn more.
           </Form.TextSmall>
         </Form>
-      </HeaderContainer>
+      </Header>
       <FooterContainer />
     </>
   );

@@ -1,11 +1,10 @@
 import React from 'react';
-import { LockBody, ReleaseBody, Spinner, Picture } from './styles/loading';
+import { LockBody, ReleaseBody, Spinner } from './styles/loading';
 
-export default function Loading({ src, ...restProps }) {
+export default function Loading({ ...restProps }) {
   return (
     <Spinner {...restProps}>
       <LockBody />
-      <Picture src={`/images/users/${src}.png`} data-testid="loading-picture" />
     </Spinner>
   );
 }

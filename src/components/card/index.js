@@ -55,7 +55,7 @@ Card.Meta = function CardMeta({ children, ...restProps }) {
   return <Meta {...restProps}>{children}</Meta>;
 };
 
-Card.Item = function CardItem({ item, children, ...restProps }) {
+Card.Item = function CardItem({ item, index, $top10, children, ...restProps }) {
   const { setShowFeature, setItemFeature } = useContext(FeatureContext);
 
   return (
@@ -64,8 +64,10 @@ Card.Item = function CardItem({ item, children, ...restProps }) {
         setItemFeature(item);
         setShowFeature(true);
       }}
+      $top10={$top10}
       {...restProps}
     >
+      {index !== undefined && <span className="card-number">{index + 1}</span>}
       {children}
     </Item>
   );
