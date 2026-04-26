@@ -21,7 +21,7 @@ exports[`<Accordion /> opens and closes the <Accordion /> component 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          What is Netflix?
+          What is Complix?
           <img
             alt="Open"
             src="/images/icons/add.png"
@@ -34,7 +34,7 @@ exports[`<Accordion /> opens and closes the <Accordion /> component 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          How much does Netflix cost?
+          How much does Complix cost?
           <img
             alt="Open"
             src="/images/icons/add.png"
@@ -73,7 +73,7 @@ exports[`<Accordion /> opens and closes the <Accordion /> component 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          What can I watch on Netflix?
+          What can I watch on Complix?
           <img
             alt="Open"
             src="/images/icons/add.png"
@@ -106,7 +106,7 @@ exports[`<Accordion /> renders the <Accordion /> with populated data 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          What is Netflix?
+          What is Complix?
           <img
             alt="Open"
             src="/images/icons/add.png"
@@ -119,7 +119,7 @@ exports[`<Accordion /> renders the <Accordion /> with populated data 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          How much does Netflix cost?
+          How much does Complix cost?
           <img
             alt="Open"
             src="/images/icons/add.png"
@@ -158,7 +158,7 @@ exports[`<Accordion /> renders the <Accordion /> with populated data 1`] = `
         <div
           class="accordion__Header-l3iym9-5 cuZxbR"
         >
-          What can I watch on Netflix?
+          What can I watch on Complix?
           <img
             alt="Open"
             src="/images/icons/add.png"

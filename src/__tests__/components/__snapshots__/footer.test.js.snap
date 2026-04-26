@@ -46,7 +46,7 @@ exports[`<Footer /> renders the <Footer /> with populated data 1`] = `
         class="footer__Link-qu6i6-3 klRjRo"
         href="#"
       >
-        Netflix Originals
+        Complix Originals
       </a>
     </div>
     <div
@@ -140,7 +140,7 @@ exports[`<Footer /> renders the <Footer /> with populated data 1`] = `
   <p
     class="footer__Text-qu6i6-5 gurtgw"
   >
-    Netflix United Kingdom
+    Complix United Kingdom
   </p>
 </div>
 `;

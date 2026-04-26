@@ -12,7 +12,7 @@ export function FooterContainer() {
           <Footer.Link href="#">Investor Relations</Footer.Link>
           <Footer.Link href="#">Ways to Watch</Footer.Link>
           <Footer.Link href="#">Corporate Information</Footer.Link>
-          <Footer.Link href="#">Netflix Originals</Footer.Link>
+          <Footer.Link href="#">Complix Originals</Footer.Link>
         </Footer.Column>
 
         <Footer.Column>
@@ -37,12 +37,8 @@ export function FooterContainer() {
         </Footer.Column>
       </Footer.Row>
       <Footer.Break />
-      <Footer.Text>Netflix United Kingdom</Footer.Text>
-      <Footer.Break />
-      <Footer.Text style={{ marginTop: '20px', color: '#e50914', fontWeight: 'bold', fontSize: '12px' }}>
-        DISCLAIMER: This is a high-fidelity clone project built strictly for educational and portfolio purposes. 
-        It is NOT the official Netflix website and does not collect real user credentials.
-      </Footer.Text>
+      <Footer.Text>Complix-Department of Computer Engineering</Footer.Text>
+
     </Footer>
   );
 }

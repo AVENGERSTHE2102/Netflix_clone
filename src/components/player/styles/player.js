@@ -74,7 +74,7 @@ export const ProgressBarThumb = styled.div`
 export const TimeRemaining = styled.div`
   color: #a3a3a3;
   font-size: 13px;
-  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Complix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 500;
 `;
 
@@ -115,7 +115,7 @@ export const ControlIcon = styled.button`
 export const VideoTitle = styled.h2`
   color: white;
   font-size: 16px;
-  font-family: 'Netflix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Complix Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 500;
   margin: 0 0 0 10px;
   white-space: nowrap;
