@@ -16,9 +16,7 @@ export function BrowseContainer({ slides }) {
   const user = JSON.parse(localStorage.getItem('authUser')) || {};
 
   useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 4000);
+    setLoading(false);
   }, [profile.displayName]);
 
   useEffect(() => {
@@ -56,7 +54,7 @@ export function BrowseContainer({ slides }) {
             <Header.TextLink active="false">Games</Header.TextLink>
             <Header.TextLink active="false">New & Popular</Header.TextLink>
             <Header.TextLink active="false">My List</Header.TextLink>
-            <Header.TextLink active="false">Browse by Languages</Header.TextLink>
+
           </Header.Group>
           <Header.Group>
             <Header.Search searchTerm={searchTerm} setSearchTerm={setSearchTerm} />

@@ -45,6 +45,11 @@ export default function SignUp() {
   const [error, setError] = useState('');
   const [showVideo, setShowVideo] = useState(false);
 
+  // Eagerly preload the Browse page logic as soon as the user hits the Signup page
+  React.useEffect(() => {
+    import('./browse');
+  }, []);
+
   const isInvalid = firstName === '' || password === '' || emailAddress === '';
 
   const handleSignup = (event) => {
@@ -71,10 +76,18 @@ export default function SignUp() {
         </VideoContainer>
       )}
 
-      {/* Background preloading */}
+      {/* Background preloading for instant transition */}
       <div style={{ display: 'none' }}>
         <video preload="auto" src="/videos/hori.webm" />
         <video preload="auto" src="/videos/verti.webm" />
+        <img src="/images/misc/hero-pc.webp" alt="" />
+        <img src="/images/misc/hero-mobile.webp" alt="" />
+        {/* Preload profile images for the Who's Watching page */}
+        <img src="/images/users/1.png" alt="" />
+        <img src="/images/users/2.png" alt="" />
+        <img src="/images/users/3.png" alt="" />
+        <img src="/images/users/4.png" alt="" />
+        <img src="/images/users/5.png" alt="" />
       </div>
 
       <Header>

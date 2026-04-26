@@ -93,7 +93,7 @@ Card.Item = function CardItem({ item, index, $top10, children, ...restProps }) {
 };
 
 Card.Image = function CardImage({ ...restProps }) {
-  return <Image {...restProps} />;
+  return <Image loading="lazy" {...restProps} />;
 };
 
 Card.Feature = function CardFeature({ children, category, ...restProps }) {
