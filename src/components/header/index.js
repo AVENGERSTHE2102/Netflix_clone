@@ -18,6 +18,9 @@ import {
   Text,
   Feature,
   Logo,
+  Hero,
+  Hamburger,
+  MobileNav,
 } from './styles/header';
 
 export default function Header({ bg = true, children, ...restProps }) {
@@ -129,6 +132,24 @@ Header.MoreInfoButton = function HeaderMoreInfoButton({ children, ...restProps }
 
 Header.FeatureCallOut = function HeaderFeatureCallOut({ children, ...restProps }) {
   return <FeatureCallOut {...restProps}>{children}</FeatureCallOut>;
+};
+
+Header.Hero = function HeaderHero({ children, ...restProps }) {
+  return <Hero {...restProps}>{children}</Hero>;
+};
+
+Header.Hamburger = function HeaderHamburger({ open, setOpen, ...restProps }) {
+  return (
+    <Hamburger $open={open} onClick={() => setOpen(!open)} {...restProps}>
+      <span />
+      <span />
+      <span />
+    </Hamburger>
+  );
+};
+
+Header.MobileNav = function HeaderMobileNav({ open, children, ...restProps }) {
+  return <MobileNav $open={open} {...restProps}>{children}</MobileNav>;
 };
 
 Header.Text = function HeaderText({ children, ...restProps }) {

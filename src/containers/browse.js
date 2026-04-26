@@ -12,6 +12,7 @@ export function BrowseContainer({ slides }) {
   const [loading, setLoading] = useState(true);
   const [searchTerm, setSearchTerm] = useState('');
   const [slideRows, setSlideRows] = useState([]);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   const user = JSON.parse(localStorage.getItem('authUser')) || {};
 
@@ -40,7 +41,7 @@ export function BrowseContainer({ slides }) {
     <>
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
 
-      <Header src="joker1" $dontShowOnSmallViewPort>
+      <Header $dontShowOnSmallViewPort>
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
             <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="80px" />
@@ -72,21 +73,24 @@ export function BrowseContainer({ slides }) {
                 </Header.Group>
               </Header.Dropdown>
             </Header.Profile>
+            <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
           </Header.Group>
         </Header.Frame>
-
-        <Header.Feature>
-          <Header.FeatureCallOut>Watch Joker Now</Header.FeatureCallOut>
-          <Header.Text>
-            Forever alone in a crowd, failed comedian Arthur Fleck seeks connection as he walks the streets of Gotham
-            City. Arthur wears two masks -- the one he paints for his day job as a clown, and the guise he projects in a
-            futile attempt to feel like he's part of the world around him.
-          </Header.Text>
-          <Header.Group>
-            <Header.PlayButton>Play</Header.PlayButton>
-            <Header.MoreInfoButton>More Info</Header.MoreInfoButton>
-          </Header.Group>
-        </Header.Feature>
+        <Header.MobileNav open={menuOpen}>
+          <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => { setCategory('series'); setMenuOpen(false); }}>
+            Home
+          </Header.TextLink>
+          <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => { setCategory('series'); setMenuOpen(false); }}>
+            Shows
+          </Header.TextLink>
+          <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => { setCategory('films'); setMenuOpen(false); }}>
+            Movies
+          </Header.TextLink>
+          <Header.TextLink onClick={() => { localStorage.removeItem('authUser'); window.location.reload(); }}>
+            Sign out
+          </Header.TextLink>
+        </Header.MobileNav>
+        <Header.Hero />
       </Header>
 
       <Card.Group>
