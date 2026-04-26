@@ -11,11 +11,6 @@ const SignUp = lazy(() => import('./pages/signup'));
 export function App() {
   const { user } = useAuthListener();
 
-  React.useEffect(() => {
-    // Project Rule 22: Clear localStorage on every refresh 
-    // to ensure the landing/signup page is always shown first.
-    localStorage.removeItem('authUser');
-  }, []);
 
   return (
     <Router>

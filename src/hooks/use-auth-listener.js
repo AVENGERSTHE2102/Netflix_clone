@@ -2,8 +2,10 @@ import { useState, useEffect } from 'react';
 
 export default function useAuthListener() {
   const [user, setUser] = useState(() => {
-    // Only clear on refresh if we are at the root (start always)
-    if (window.location.pathname === '/') {
+    // Clear session whenever the user is on an entry page (signup / root).
+    // This enforces: every fresh visit always starts at Signup.
+    const isEntryPage = ['/', '/signup'].includes(window.location.pathname);
+    if (isEntryPage) {
       localStorage.removeItem('authUser');
       return null;
     }
@@ -11,15 +13,11 @@ export default function useAuthListener() {
   });
 
   useEffect(() => {
+    // Listen for storage changes (e.g. after signup sets the token)
     const listener = () => {
       const authUser = JSON.parse(localStorage.getItem('authUser'));
       setUser(authUser);
     };
-    
-    // Check initial state
-    listener();
-    
-    // Listen for storage changes if multiple tabs
     window.addEventListener('storage', listener);
     return () => window.removeEventListener('storage', listener);
   }, []);

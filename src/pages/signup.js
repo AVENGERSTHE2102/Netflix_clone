@@ -59,7 +59,10 @@ export default function SignUp() {
   const handleSignup = (event) => {
     event.preventDefault();
 
-    localStorage.setItem('authUser', JSON.stringify({ displayName: firstName, photoURL: Math.floor(Math.random() * 5) + 1 }));
+    const authData = { displayName: firstName, photoURL: Math.floor(Math.random() * 5) + 1 };
+    localStorage.setItem('authUser', JSON.stringify(authData));
+    // Dispatch storage event so useAuthListener updates in the same tab
+    window.dispatchEvent(new Event('storage'));
     setShowVideo(true);
   };
 
