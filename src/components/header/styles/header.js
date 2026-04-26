@@ -23,6 +23,10 @@ export const Background = styled.div`
       return `url(/images/misc/${mobileSrc}${mobileSrc.includes('.') ? '' : '.webp'}) top left / cover no-repeat`;
     }};
   }
+
+  @media (max-width: 800px) {
+    ${({ $isHero }) => $isHero ? 'aspect-ratio: unset; min-height: 56.25vw;' : ''}
+  }
   transition: background 0.5s ease;
 
   &::before {
@@ -83,6 +87,15 @@ export const Container = styled.div`
 
   @media (max-width: 1000px) {
     margin: 0 30px;
+  }
+
+  @media (max-width: 800px) {
+    margin: 0;
+    padding: 0 16px;
+    background: #141414;
+    width: 100%;
+    left: 0;
+    right: 0;
   }
 `;
 
