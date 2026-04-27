@@ -12,7 +12,7 @@ export const Background = styled.div`
   position: relative;
   background: #000;
   width: 100%;
-  ${({ $isHero, src }) => ($isHero ? 'aspect-ratio: 16 / 9;' : (src ? 'min-height: 100vh;' : 'height: auto;'))}
+  ${({ $isHero, src }) => ($isHero ? 'height: auto; min-height: 500px;' : (src ? 'min-height: 100vh;' : 'height: auto;'))}
   overflow: ${({ $isHero }) => ($isHero ? 'hidden' : 'visible')};
   background: ${({ src }) => (src ? `url(/images/misc/${src}${src.includes('.') ? '' : '.webp'}) top left / cover no-repeat` : 'black')};
   
@@ -55,10 +55,11 @@ export const ImageBackground = styled.div`
 `;
 
 export const Video = styled.video`
+  width: 100%;
+  height: auto;
   position: absolute;
   top: 0;
   left: 0;
-  width: 100%;
   height: 100%;
   object-fit: cover;
   animation: ${zoomIn} 25s infinite alternate ease-in-out;
