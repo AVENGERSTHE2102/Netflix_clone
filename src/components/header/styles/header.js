@@ -12,7 +12,7 @@ export const Background = styled.div`
   position: relative;
   background: #000;
   width: 100%;
-  ${({ $isHero, src }) => ($isHero ? 'height: auto; min-height: 500px;' : (src ? 'min-height: 100vh;' : 'height: auto;'))}
+  ${({ $isHero, src }) => ($isHero ? 'aspect-ratio: 16 / 9;' : (src ? 'min-height: 100vh;' : 'height: auto;'))}
   overflow: ${({ $isHero }) => ($isHero ? 'hidden' : 'visible')};
   background: ${({ src }) => (src ? `url(/images/misc/${src}${src.includes('.') ? '' : '.webp'}) top left / cover no-repeat` : 'black')};
   
@@ -24,8 +24,8 @@ export const Background = styled.div`
     }};
   }
 
-  @media (max-width: 800px) {
-    ${({ $isHero }) => $isHero ? 'aspect-ratio: unset; min-height: 56.25vw; margin-top: 100px;' : ''}
+  @media (max-width: 768px) {
+    ${({ $isHero }) => $isHero ? 'aspect-ratio: 9 / 16; height: auto; min-height: unset; margin-top: 0;' : ''}
   }
   transition: background 0.5s ease;
 
@@ -55,15 +55,21 @@ export const ImageBackground = styled.div`
 `;
 
 export const Video = styled.video`
-  width: 100%;
-  height: auto;
   position: absolute;
   top: 0;
   left: 0;
+  width: 100%;
   height: 100%;
   object-fit: cover;
   animation: ${zoomIn} 25s infinite alternate ease-in-out;
   z-index: 1;
+
+  @media (max-width: 768px) {
+    animation: none;
+    object-fit: contain;
+    object-position: center center;
+    background: #000;
+  }
 `;
 
 
@@ -93,7 +99,6 @@ export const Container = styled.div`
   @media (max-width: 800px) {
     margin: 0;
     padding: 0 16px;
-    background: #141414;
     width: 100%;
     left: 0;
     right: 0;

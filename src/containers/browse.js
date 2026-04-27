@@ -41,8 +41,8 @@ export function BrowseContainer({ slides }) {
     <>
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
 
-      <Header $isHero={true}>
-        <Header.Video src="/videos/hero.mp4" poster="/images/misc/hero-pc.webp" />
+      <Header $isHero={true} $dontShowOnSmallViewPort>
+        <Header.Video src="/videos/hero.mp4" mobileSrc="/videos/hero-mobile.webm" poster="/images/misc/hero-pc.webp" />
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
             <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
