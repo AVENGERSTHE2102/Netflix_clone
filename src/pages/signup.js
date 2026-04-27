@@ -44,8 +44,6 @@ export default function SignUp() {
   const history = useHistory();
 
   const [firstName, setFirstName] = useState('');
-  const [emailAddress, setEmailAddress] = useState('');
-  const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const [showVideo, setShowVideo] = useState(false);
 
@@ -54,7 +52,7 @@ export default function SignUp() {
     import('./browse');
   }, []);
 
-  const isInvalid = firstName === '' || password === '' || emailAddress === '';
+  const isInvalid = firstName === '';
 
   const handleSignup = (event) => {
     event.preventDefault();
@@ -127,18 +125,6 @@ export default function SignUp() {
               placeholder="First name"
               value={firstName}
               onChange={({ target }) => setFirstName(target.value)}
-            />
-            <Form.Input
-              placeholder="Email address"
-              value={emailAddress}
-              onChange={({ target }) => setEmailAddress(target.value)}
-            />
-            <Form.Input
-              type="password"
-              value={password}
-              autoComplete="off"
-              placeholder="Password"
-              onChange={({ target }) => setPassword(target.value)}
             />
             <Form.Submit disabled={isInvalid} type="submit" data-testid="sign-up">
               Sign Up
