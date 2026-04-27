@@ -102,8 +102,8 @@ export default function SignUp() {
       <div style={{ display: 'none' }}>
         <video preload="auto" muted playsInline><source src="/videos/hori.webm" type="video/webm" /></video>
         <video preload="auto" muted playsInline><source src="/videos/verti.webm" type="video/webm" /></video>
-        <video preload="auto" muted playsInline><source src="/videos/hero.webm" type="video/webm" /></video>
-        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero.webm?v=1.1" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm?v=1.1" type="video/webm" /></video>
         <img src="/images/misc/hero-pc.webp" alt="" />
         <img src="/images/misc/hero-mobile.webp" alt="" />
         {/* Preload profile images for the Who's Watching page */}

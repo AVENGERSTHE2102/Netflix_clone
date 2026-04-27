@@ -15,8 +15,8 @@ export function SelectProfileContainer({ setProfile }) {
     <>
       {/* Preload hero videos while user selects profile */}
       <div style={{ display: 'none' }}>
-        <video preload="auto" muted playsInline><source src="/videos/hero.webm" type="video/webm" /></video>
-        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero.webm?v=1.1" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm?v=1.1" type="video/webm" /></video>
       </div>
 
       <Header bg={false}>
