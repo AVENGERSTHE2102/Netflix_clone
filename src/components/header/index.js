@@ -58,6 +58,7 @@ Header.Video = function HeaderVideo({ src, mobileSrc, poster, ...restProps }) {
 
   return (
     <Video autoPlay muted loop playsInline poster={poster} key={videoSrc} {...restProps}>
+      <source src={videoSrc.replace('.mp4', '.webm')} type="video/webm" />
       <source src={videoSrc} type="video/mp4" />
     </Video>
   );

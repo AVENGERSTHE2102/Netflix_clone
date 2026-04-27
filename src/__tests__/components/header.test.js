@@ -9,7 +9,7 @@ describe('<Header />', () => {
     const { container, getByText, getByTestId } = render(
       <Header>
         <Header.Frame>
-          <Header.Logo src="/logo.svg" alt="Complix" />
+          <Header.Logo src="/logo.svg" alt="Compflix" />
           <Header.TextLink active="true">Hello I am a link!</Header.TextLink>
         </Header.Frame>
       </Header>
@@ -24,7 +24,7 @@ describe('<Header />', () => {
     const { container, getByText, queryByTestId } = render(
       <Header bg={false}>
         <Header.Frame>
-          <Header.Logo src="/logo.svg" alt="Complix" />
+          <Header.Logo src="/logo.svg" alt="Compflix" />
           <Header.ButtonLink>Sign In</Header.ButtonLink>
           <Header.TextLink active={false}>Hello I am a link!</Header.TextLink>
         </Header.Frame>
@@ -41,7 +41,7 @@ describe('<Header />', () => {
       <Header src="joker1" dontShowOnSmallViewPort>
         <Header.Frame>
           <Header.Group>
-            <Header.Logo src="/images/logo.svg" alt="Complix" />
+            <Header.Logo src="/images/logo.svg" alt="Compflix" />
             <Header.TextLink active={false} onClick={() => {}}>
               Series
             </Header.TextLink>

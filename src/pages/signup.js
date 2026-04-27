@@ -116,7 +116,7 @@ export default function SignUp() {
 
       <Header src="hero-pc">
         <LogoContainer>
-          <MainLogo src="/images/logo.png" alt="Complix" />
+          <MainLogo src="/images/logo.png" alt="Compflix" />
         </LogoContainer>
         <Form translate="no">
           <Form.Title>Sign Up</Form.Title>

@@ -7,6 +7,7 @@ import { Loading } from './components';
 
 const Browse = lazy(() => import('./pages/browse'));
 const SignUp = lazy(() => import('./pages/signup'));
+const Invitation = lazy(() => import('./pages/invitation'));
 
 export function App() {
   const { user } = useAuthListener();
@@ -24,6 +25,9 @@ export function App() {
           </ProtectedRoute>
           <Route exact path={ROUTES.HOME}>
             <SignUp />
+          </Route>
+          <Route path={ROUTES.INVITATION}>
+            <Invitation />
           </Route>
           <Route path="*">
             <Redirect to={ROUTES.HOME} />

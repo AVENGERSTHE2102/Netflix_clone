@@ -12,7 +12,7 @@ export function FooterContainer() {
           <Footer.Link href="#">Investor Relations</Footer.Link>
           <Footer.Link href="#">Ways to Watch</Footer.Link>
           <Footer.Link href="#">Corporate Information</Footer.Link>
-          <Footer.Link href="#">Complix Originals</Footer.Link>
+          <Footer.Link href="#">Compflix Originals</Footer.Link>
         </Footer.Column>
 
         <Footer.Column>
@@ -37,7 +37,7 @@ export function FooterContainer() {
         </Footer.Column>
       </Footer.Row>
       <Footer.Break />
-      <Footer.Text>Complix-Department of Computer Engineering</Footer.Text>
+      <Footer.Text>Compflix-Department of Computer Engineering</Footer.Text>
 
     </Footer>
   );

@@ -12,7 +12,7 @@ export const Background = styled.div`
   position: relative;
   background: #000;
   width: 100%;
-  ${({ $isHero }) => ($isHero ? 'aspect-ratio: 16 / 9;' : 'min-height: 100vh;')}
+  ${({ $isHero, src }) => ($isHero ? 'aspect-ratio: 16 / 9;' : (src ? 'min-height: 100vh;' : 'height: auto;'))}
   overflow: ${({ $isHero }) => ($isHero ? 'hidden' : 'visible')};
   background: ${({ src }) => (src ? `url(/images/misc/${src}${src.includes('.') ? '' : '.webp'}) top left / cover no-repeat` : 'black')};
   
@@ -25,7 +25,7 @@ export const Background = styled.div`
   }
 
   @media (max-width: 800px) {
-    ${({ $isHero }) => $isHero ? 'aspect-ratio: unset; min-height: 56.25vw;' : ''}
+    ${({ $isHero }) => $isHero ? 'aspect-ratio: unset; min-height: 56.25vw; margin-top: 100px;' : ''}
   }
   transition: background 0.5s ease;
 

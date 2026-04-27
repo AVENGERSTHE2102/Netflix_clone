@@ -14,7 +14,7 @@ describe('<Footer />', () => {
             <Footer.Link href="#">Investor Relations</Footer.Link>
             <Footer.Link href="#">Ways to Watch</Footer.Link>
             <Footer.Link href="#">Corporate Information</Footer.Link>
-            <Footer.Link href="#">Complix Originals</Footer.Link>
+            <Footer.Link href="#">Compflix Originals</Footer.Link>
           </Footer.Column>
 
           <Footer.Column>
@@ -39,7 +39,7 @@ describe('<Footer />', () => {
           </Footer.Column>
         </Footer.Row>
         <Footer.Break />
-        <Footer.Text>Complix United Kingdom</Footer.Text>
+        <Footer.Text>Compflix United Kingdom</Footer.Text>
       </Footer>
     );
 
@@ -48,7 +48,7 @@ describe('<Footer />', () => {
     expect(getByText('Investor Relations')).toBeTruthy();
     expect(getByText('Ways to Watch')).toBeTruthy();
     expect(getByText('Corporate Information')).toBeTruthy();
-    expect(getByText('Complix Originals')).toBeTruthy();
+    expect(getByText('Compflix Originals')).toBeTruthy();
     expect(container.firstChild).toMatchSnapshot();
   });
 });

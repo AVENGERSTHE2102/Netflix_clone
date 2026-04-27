@@ -137,7 +137,7 @@ Player.Video = function PlayerVideo({ src, ...restProps }) {
 
           <video 
             ref={videoRef} 
-            id="complix-player" 
+            id="compflix-player" 
             src="/videos/test-video.mkv" 
             type="video/mp4" 
             onTimeUpdate={handleTimeUpdate}

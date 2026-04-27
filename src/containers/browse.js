@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 import Fuse from 'fuse.js';
 import { Card, Header, Loading, Player, Countdown } from '../components';
 import * as ROUTES from '../constants/routes';
@@ -7,6 +8,7 @@ import { SelectProfileContainer } from './profiles';
 import { FooterContainer } from './footer';
 
 export function BrowseContainer({ slides }) {
+  const history = useHistory();
   const [category, setCategory] = useState('series');
   const [profile, setProfile] = useState({});
   const [loading, setLoading] = useState(true);
@@ -44,7 +46,7 @@ export function BrowseContainer({ slides }) {
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
             <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
-            <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Complix" $height="80px" />
+            <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Compflix" $height="80px" />
             <Header.Group $hideMobile>
               <Header.TextLink active="true" onClick={() => setCategory('series')}>
                 Home
@@ -56,7 +58,7 @@ export function BrowseContainer({ slides }) {
                 Movies
               </Header.TextLink>
               <Header.TextLink active="false">Games</Header.TextLink>
-              <Header.TextLink active="false">New & Popular</Header.TextLink>
+              <Header.TextLink active="false" onClick={() => history.push(ROUTES.INVITATION)}>Invitation</Header.TextLink>
               <Header.TextLink active="false">My List</Header.TextLink>
             </Header.Group>
           </Header.Group>
@@ -66,7 +68,7 @@ export function BrowseContainer({ slides }) {
             <Header.TextLink active={category === 'series' ? 'true' : 'false'} onClick={() => { setCategory('series'); setMenuOpen(false); }}>Shows</Header.TextLink>
             <Header.TextLink active={category === 'films' ? 'true' : 'false'} onClick={() => { setCategory('films'); setMenuOpen(false); }}>Movies</Header.TextLink>
             <Header.TextLink onClick={() => setMenuOpen(false)}>Games</Header.TextLink>
-            <Header.TextLink onClick={() => setMenuOpen(false)}>New & Popular</Header.TextLink>
+            <Header.TextLink onClick={() => { history.push(ROUTES.INVITATION); setMenuOpen(false); }}>Invitation</Header.TextLink>
             <Header.TextLink onClick={() => setMenuOpen(false)}>My List</Header.TextLink>
           </Header.MobileMenu>
 
@@ -105,7 +107,7 @@ export function BrowseContainer({ slides }) {
                             <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>
                           </Card.Icon>
                           <Card.Icon>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="14" y2="12"></line></svg>
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
                           </Card.Icon>
                           <Card.Icon>
                             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9l-5 5m0-5l5 5"></path></svg>
