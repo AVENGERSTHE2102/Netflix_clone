@@ -100,8 +100,10 @@ export default function SignUp() {
 
       {/* Background preloading for instant transition */}
       <div style={{ display: 'none' }}>
-        <video preload="auto" src="/videos/hori.webm" />
-        <video preload="auto" src="/videos/verti.webm" />
+        <video preload="auto" muted playsInline><source src="/videos/hori.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/verti.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm" type="video/webm" /></video>
         <img src="/images/misc/hero-pc.webp" alt="" />
         <img src="/images/misc/hero-mobile.webp" alt="" />
         {/* Preload profile images for the Who's Watching page */}

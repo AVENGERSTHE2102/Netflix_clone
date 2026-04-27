@@ -46,10 +46,10 @@ export default function Header({ bg = true, src, children, ...restProps }) {
 }
 
 Header.Video = function HeaderVideo({ src, mobileSrc, poster, ...restProps }) {
-  const [isMobile, setIsMobile] = React.useState(window.innerWidth < 768);
+  const [isMobile, setIsMobile] = React.useState(window.innerWidth <= 768);
 
   React.useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 768);
+    const handleResize = () => setIsMobile(window.innerWidth <= 768);
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
   }, []);
@@ -57,9 +57,9 @@ Header.Video = function HeaderVideo({ src, mobileSrc, poster, ...restProps }) {
   const videoSrc = isMobile && mobileSrc ? mobileSrc : src;
 
   return (
-    <Video autoPlay muted loop playsInline poster={poster} key={videoSrc} {...restProps}>
-      <source src={videoSrc.replace('.mp4', '.webm')} type="video/webm" />
-      <source src={videoSrc} type="video/mp4" />
+    <Video autoPlay muted loop playsInline poster={poster} preload="auto" key={videoSrc} {...restProps}>
+      <source src={videoSrc.endsWith('.webm') ? videoSrc : videoSrc.replace('.mp4', '.webm')} type="video/webm" />
+      <source src={videoSrc.endsWith('.mp4') ? videoSrc : videoSrc.replace('.webm', '.mp4')} type="video/mp4" />
     </Video>
   );
 };

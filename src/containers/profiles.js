@@ -13,6 +13,12 @@ export function SelectProfileContainer({ setProfile }) {
 
   return (
     <>
+      {/* Preload hero videos while user selects profile */}
+      <div style={{ display: 'none' }}>
+        <video preload="auto" muted playsInline><source src="/videos/hero.webm" type="video/webm" /></video>
+        <video preload="auto" muted playsInline><source src="/videos/hero-mobile.webm" type="video/webm" /></video>
+      </div>
+
       <Header bg={false}>
         <Header.Frame $fixed={false} $justify="center" $height="100px">
           <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Compflix" $height="60px" />
