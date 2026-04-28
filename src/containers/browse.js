@@ -92,55 +92,86 @@ export function BrowseContainer({ slides }) {
       </Header>
 
       <Card.Group>
-        {slideRows.map((slideItem) => (
-          <React.Fragment key={`${category}-${slideItem.title.toLowerCase()}`}>
-            <Card>
-              <Card.Title>{slideItem.title}</Card.Title>
-              <Card.Entities>
-                {Array(5).fill(slideItem.data).flat().map((item, index) => (
-                  <Card.Item key={`${item.docId}-${index}`} item={item} index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} $top10={slideItem.title.includes('Top 10')}>
-                    <Card.Image src={`/images/parody/${item.slug}.png`} />
-                    <Card.Meta>
-                      <Card.Icons>
-                        <Header.Group>
-                          <Card.Icon $primary>
-                            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>
-                          </Card.Icon>
-                          <Card.Icon>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
-                          </Card.Icon>
-                          <Card.Icon>
-                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9l-5 5m0-5l5 5"></path></svg>
-                          </Card.Icon>
-                        </Header.Group>
-                        <Card.Icon>
-                          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                        </Card.Icon>
-                      </Card.Icons>
-                      <Card.MetaData>
-                        <span style={{ color: '#46d369', marginRight: '10px' }}>98% Match</span>
-                        <Card.Badge>{item.maturity}+</Card.Badge>
-                        <span style={{ marginRight: '10px' }}>1h 38m</span>
-                        <Card.Badge>HD</Card.Badge>
-                      </Card.MetaData>
-                      <Card.Tags>
-                        <Card.Tag>Goofy</Card.Tag>
-                        <Card.Tag>{item.genre.charAt(0).toUpperCase() + item.genre.slice(1)}</Card.Tag>
-                        <Card.Tag>US</Card.Tag>
-                      </Card.Tags>
-                    </Card.Meta>
-                  </Card.Item>
-                ))}
-              </Card.Entities>
-              <Player>
-                <Card.Feature category={category}>
-                  <Player.Video src="/videos/bunny.mp4" />
-                </Card.Feature>
-              </Player>
-            </Card>
-            {slideItem.title.includes('Top 10') && <Countdown />}
-          </React.Fragment>
-        ))}
+        {slideRows.map((slideItem) => {
+          const parodyImages = [
+            '3-idiots.png',
+            'barfi.png',
+            'bhag-milkha-bagh.png',
+            'chichrre.png',
+            'dhabang.png',
+            'fukrrey.png',
+            'harry-potter-and-the-philosopers-stone.png',
+            'inception.png',
+            'jab-we-met.png',
+            'martian.png',
+            'men-in-black.png',
+            'munna-bhai-mbbs.png',
+            'sherlock-holmes.png',
+            'top-gun-maverik.png',
+            'wake-up-sid.png',
+            'wolf-of-wall-street.png',
+          ];
+
+          return (
+            <React.Fragment key={`${category}-${slideItem.title.toLowerCase()}`}>
+              <Card>
+                <Card.Title>{slideItem.title}</Card.Title>
+                <Card.Entities>
+                  {Array(5).fill(slideItem.data).flat().map((item, index) => {
+                    const parodyIndex = (index + slideItem.title.length) % parodyImages.length;
+                    const parodySrc = `/images/parody/${parodyImages[parodyIndex]}`;
+                    
+                    return (
+                      <Card.Item 
+                        key={`${item.docId}-${index}`} 
+                        item={{ ...item, parodySrc }} 
+                        index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} 
+                        $top10={slideItem.title.includes('Top 10')}
+                      >
+                        <Card.Image src={parodySrc} />
+                        <Card.Meta>
+                          <Card.Icons>
+                            <Header.Group>
+                              <Card.Icon $primary>
+                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>
+                              </Card.Icon>
+                              <Card.Icon>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                              </Card.Icon>
+                              <Card.Icon>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9l-5 5m0-5l5 5"></path></svg>
+                              </Card.Icon>
+                            </Header.Group>
+                            <Card.Icon>
+                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                            </Card.Icon>
+                          </Card.Icons>
+                          <Card.MetaData>
+                            <span style={{ color: '#46d369', marginRight: '10px' }}>98% Match</span>
+                            <Card.Badge>{item.maturity}+</Card.Badge>
+                            <span style={{ marginRight: '10px' }}>1h 38m</span>
+                            <Card.Badge>HD</Card.Badge>
+                          </Card.MetaData>
+                          <Card.Tags>
+                            <Card.Tag>Goofy</Card.Tag>
+                            <Card.Tag>{item.genre.charAt(0).toUpperCase() + item.genre.slice(1)}</Card.Tag>
+                            <Card.Tag>US</Card.Tag>
+                          </Card.Tags>
+                        </Card.Meta>
+                      </Card.Item>
+                    );
+                  })}
+                </Card.Entities>
+                <Player>
+                  <Card.Feature category={category}>
+                    <Player.Video src="/videos/bunny.mp4" />
+                  </Card.Feature>
+                </Player>
+              </Card>
+              {slideItem.title.includes('Top 10') && <Countdown />}
+            </React.Fragment>
+          );
+        })}
       </Card.Group>
       <FooterContainer />
     </>
