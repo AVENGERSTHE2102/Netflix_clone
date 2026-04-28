@@ -82,25 +82,11 @@ const FilmStrip = styled.div`
   animation: ${props => props.reverse ? scrollReverse : scroll} 30s linear infinite;
 `;
 
-const VideoBackground = styled.video`
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  z-index: 5;
-  opacity: 0.8;
-  filter: brightness(1.1);
-`;
 
 export default function Invitation() {
   return (
     <PageContainer>
 
-      <VideoBackground autoPlay muted loop playsInline>
-        <source src="/videos/invitation_full.webm" type="video/webm" />
-      </VideoBackground>
 
       <LeftStrip>
         <FilmStrip />

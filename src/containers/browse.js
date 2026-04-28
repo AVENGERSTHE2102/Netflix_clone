@@ -42,7 +42,6 @@ export function BrowseContainer({ slides }) {
       {loading ? <Loading src={user.photoURL} /> : <Loading.ReleaseBody />}
 
       <Header $isHero={true} $dontShowOnSmallViewPort>
-        <Header.Video src="/videos/hero.mp4" mobileSrc="/videos/hero-mobile.webm" poster="/images/misc/hero-pc.webp" />
         <Header.Frame $fixed={true} $justify="space-between" $height="100px">
           <Header.Group>
             <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
@@ -89,6 +88,7 @@ export function BrowseContainer({ slides }) {
           </Header.Group>
         </Header.Frame>
 
+        <Header.Video src="/videos/hero.webm" mobileSrc="/videos/hero-mobile.webm" />
       </Header>
 
       <Card.Group>
@@ -99,7 +99,7 @@ export function BrowseContainer({ slides }) {
               <Card.Entities>
                 {Array(5).fill(slideItem.data).flat().map((item, index) => (
                   <Card.Item key={`${item.docId}-${index}`} item={item} index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} $top10={slideItem.title.includes('Top 10')}>
-                    <Card.Image src={`/images/${category}/${item.genre}/${item.slug}/${slideItem.title.includes('Top 10') ? 'large' : 'small'}.jpg`} />
+                    <Card.Image src={`/images/parody/${item.slug}.png`} />
                     <Card.Meta>
                       <Card.Icons>
                         <Header.Group>
