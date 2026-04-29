@@ -46,6 +46,7 @@ export function FooterContainer() {
         <Footer.Link href="https://www.linkedin.com/in/shravani-pokale-a875a2326/" target="_blank" style={{ marginBottom: 0 }}>
           Shravani Pokale
         </Footer.Link>
+        {' '} | Spoof by Liston D'souza
       </Footer.Text>
 
     </Footer>
