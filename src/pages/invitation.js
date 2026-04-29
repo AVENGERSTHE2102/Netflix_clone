@@ -15,10 +15,21 @@ const scrollReverse = keyframes`
 const PageContainer = styled.div`
   position: relative;
   overflow: hidden;
-  background: #000;
+  background: url('/images/misc/HeroIMGPC.png') center center / cover no-repeat;
   min-height: 100vh;
   display: flex;
   flex-direction: column;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    z-index: 1;
+  }
 `;
 
 const ContentWrapper = styled.div`
@@ -88,13 +99,9 @@ export default function Invitation() {
     <PageContainer>
 
 
-      <LeftStrip>
-        <FilmStrip />
-      </LeftStrip>
+      <ContentWrapper>
 
-      <RightStrip>
-        <FilmStrip reverse />
-      </RightStrip>
+      </ContentWrapper>
 
 
     </PageContainer>

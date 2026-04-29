@@ -92,113 +92,99 @@ export function BrowseContainer({ slides }) {
       </Header>
 
       <Card.Group>
-        {slideRows.map((slideItem) => {
-          const parodyImages = [
-            '1.png',
-            '2.png',
-            '3.png',
-            '4.png',
-            '5.png',
-            '6.png',
-            '7.png',
-            '8.png',
-            '9.png',
-            '10.png',
-            '11.png',
-            '12.png',
-            '13.png',
-            '14.png',
-            '15.png',
-            '16.png',
-            '17.png',
-            '18.png',
-            '19.png',
-            '20.png',
-            '21.png',
-            '22.png',
-            '23.png',
+        {(() => {
+          const parodyData = [
+            { img: '1.png', title: 'The Martian', description: 'An astronaut stranded on Mars fights to survive using science and resilience.', cast: 'Matt Damon, Jessica Chastain, Jeff Daniels', realGenre: 'Sci-Fi, Adventure, Drama', tags: 'Inspiring, Scientific, Thrilling' },
+            { img: '2.png', title: 'The Wolf of Wall Street', description: 'A stockbroker rises to extreme wealth through fraud, greed, and chaos.', cast: 'Leonardo DiCaprio, Jonah Hill, Margot Robbie', realGenre: 'Biography, Comedy, Crime', tags: 'Chaotic, Greedy, Outrageous' },
+            { img: '3.png', title: 'Men in Black', description: 'Secret agents protect Earth from alien threats hidden among us.', cast: 'Will Smith, Tommy Lee Jones, Linda Fiorentino', realGenre: 'Sci-Fi, Action, Comedy', tags: 'Iconic, Fun, Extraterrestrial' },
+            { img: '4.png', title: 'Inception', description: 'A thief enters dreams to steal secrets in a mind-bending reality.', cast: 'Leonardo DiCaprio, Joseph Gordon-Levitt, Tom Hardy', realGenre: 'Sci-Fi, Action, Adventure', tags: 'Mind-bending, Heist, Philosophical' },
+            { img: '5.png', title: 'Harry Potter', description: 'A young wizard discovers magic, friendship, and his destiny.', cast: 'Daniel Radcliffe, Emma Watson, Rupert Grint', realGenre: 'Fantasy, Adventure, Family', tags: 'Magical, Epic, Nostalgic' },
+            { img: '6.png', title: 'Top Gun Maverick', description: 'A legendary pilot trains the next generation for a dangerous mission.', cast: 'Tom Cruise, Miles Teller, Jennifer Connelly', realGenre: 'Action, Drama', tags: 'Adrenaline, Heroic, Spectacular' },
+            { img: '7.png', title: 'Sherlock Holmes', description: 'A brilliant detective solves complex mysteries with sharp intellect.', cast: 'Robert Downey Jr., Jude Law, Rachel McAdams', realGenre: 'Action, Adventure, Mystery', tags: 'Intellectual, Gritty, Witty' },
+            { img: '8.png', title: '3 Idiots', description: 'Three friends challenge the education system and chase true passion.', cast: 'Aamir Khan, R. Madhavan, Kareena Kapoor', realGenre: 'Comedy, Drama', tags: 'Heartfelt, Inspiring, Iconic' },
+            { img: '9.png', title: 'Bhaag Milkha Bhaag', description: 'The inspiring journey of India’s legendary sprinter.', cast: 'Farhan Akhtar, Sonam Kapoor, Divya Dutta', realGenre: 'Biography, Drama, Sports', tags: 'Determined, Powerful, Emotional' },
+            { img: '10.png', title: 'Barfi!', description: 'A heartwarming story of love and innocence.', cast: 'Ranbir Kapoor, Priyanka Chopra, Ileana D\'Cruz', realGenre: 'Comedy, Drama, Romance', tags: 'Whimsical, Sweet, Poetic' },
+            { img: '11.png', title: 'Dabangg', description: 'A fearless cop with swag takes on corruption.', cast: 'Salman Khan, Sonakshi Sinha, Sonu Sood', realGenre: 'Action, Comedy, Crime', tags: 'Massy, Stylized, Entertaining' },
+            { img: '12.png', title: 'Chhichhore', description: 'A story about friendship, failure, and life lessons.', cast: 'Sushant Singh Rajput, Shraddha Kapoor, Varun Sharma', realGenre: 'Comedy, Drama', tags: 'Nostalgic, Life-affirming, Fun' },
+            { img: '13.png', title: 'Jab We Met', description: 'A lively girl changes a lost man’s life.', cast: 'Shahid Kapoor, Kareena Kapoor', realGenre: 'Comedy, Drama, Romance', tags: 'Bubbly, Romantic, Feel-good' },
+            { img: '14.png', title: 'Munna Bhai MBBS', description: 'A gangster enters medical college to fulfill his father’s dream.', cast: 'Sanjay Dutt, Arshad Warsi, Boman Irani', realGenre: 'Comedy, Drama', tags: 'Hilarious, Touching, Classic' },
+            { img: '15.png', title: 'Fukrey', description: 'Friends get into chaos while chasing easy money.', cast: 'Pulkit Samrat, Varun Sharma, Ali Fazal', realGenre: 'Comedy, Drama', tags: 'Quirky, Street-smart, Laugh-out-loud' },
+            { img: '16.png', title: 'Wake Up Sid', description: 'A carefree boy discovers responsibility and purpose in life.', cast: 'Ranbir Kapoor, Konkona Sen Sharma', realGenre: 'Comedy, Drama, Romance', tags: 'Coming-of-age, Urban, Relatable' },
+            { img: '17.png', title: 'Hera Pheri', description: 'Three men get caught in a hilarious mess involving money and confusion.', cast: 'Akshay Kumar, Suniel Shetty, Paresh Rawal', realGenre: 'Comedy, Crime', tags: 'Legendary, Slapstick, Eternal' },
+            { img: '18.png', title: 'Queen', description: 'A woman goes on a solo trip and finds herself after a broken wedding.', cast: 'Kangana Ranaut, Rajkummar Rao, Lisa Haydon', realGenre: 'Comedy, Drama', tags: 'Empowering, Travel, Self-discovery' },
+            { img: '19.png', title: 'Student of the Year', description: 'College life filled with friendship, rivalry, love, and competition.', cast: 'Sidharth Malhotra, Alia Bhatt, Varun Dhawan', realGenre: 'Comedy, Drama, Romance', tags: 'Glamorous, Youthful, Vibrant' },
+            { img: '20.png', title: 'Veere Di Wedding', description: 'Four friends navigate friendship, love, and modern relationships.', cast: 'Kareena Kapoor Khan, Sonam Kapoor, Swara Bhaskar', realGenre: 'Comedy, Drama', tags: 'Bold, Modern, Friendship-goals' },
+            { img: '21.png', title: 'A Gentleman', description: 'A man living a peaceful life gets pulled into unexpected action and danger.', cast: 'Sidharth Malhotra, Jacqueline Fernandez', realGenre: 'Action, Comedy, Romance', tags: 'Slick, Action-packed, Cool' },
+            { img: '22.png', title: 'Chennai Express', description: 'A fun-filled journey of love, action, and adventure across South India.', cast: 'Shah Rukh Khan, Deepika Padukone', realGenre: 'Action, Comedy, Romance', tags: 'Colorful, Energetic, Romantic-comedy' },
+            { img: '23.png', title: 'Main Tera Hero', description: 'A mischievous boy gets into crazy situations in love and life.', cast: 'Varun Dhawan, Ileana D\'Cruz, Nargis Fakhri', realGenre: 'Action, Comedy, Romance', tags: 'Zany, Youthful, Masala' },
+            { img: '24.png', title: 'Bhool Bhulaiyaa', description: 'A psychological thriller about a haunted mansion and a mysterious presence.', cast: 'Akshay Kumar, Vidya Balan, Shiney Ahuja', realGenre: 'Horror, Comedy, Mystery', tags: 'Psychological, Haunting, Classic' },
           ];
 
-          const parodyData = [
-  { img: '1.png', title: 'The Martian', description: 'An astronaut stranded on Mars fights to survive using science and resilience.' },
-  { img: '2.png', title: 'The Wolf of Wall Street', description: 'A stockbroker rises to extreme wealth through fraud, greed, and chaos.' },
-  { img: '3.png', title: 'Men in Black', description: 'Secret agents protect Earth from alien threats hidden among us.' },
-  { img: '4.png', title: 'Inception', description: 'A thief enters dreams to steal secrets in a mind-bending reality.' },
-  { img: '5.png', title: 'Harry Potter', description: 'A young wizard discovers magic, friendship, and his destiny.' },
-  { img: '6.png', title: 'Top Gun Maverick', description: 'A legendary pilot trains the next generation for a dangerous mission.' },
-  { img: '7.png', title: 'Sherlock Holmes', description: 'A brilliant detective solves complex mysteries with sharp intellect.' },
-  { img: '8.png', title: '3 Idiots', description: 'Three friends challenge the education system and chase true passion.' },
-  { img: '9.png', title: 'Bhaag Milkha Bhaag', description: 'The inspiring journey of India’s legendary sprinter.' },
-  { img: '10.png', title: 'Barfi!', description: 'A heartwarming story of love and innocence.' },
-  { img: '11.png', title: 'Dabangg', description: 'A fearless cop with swag takes on corruption.' },
-  { img: '12.png', title: 'Chhichhore', description: 'A story about friendship, failure, and life lessons.' },
-  { img: '13.png', title: 'Jab We Met', description: 'A lively girl changes a lost man’s life.' },
-  { img: '14.png', title: 'Munna Bhai MBBS', description: 'A gangster enters medical college to fulfill his father’s dream.' },
-  { img: '15.png', title: 'Fukrey', description: 'Friends get into chaos while chasing easy money.' },
-  { img: '16.png', title: 'Wake Up Sid', description: 'A carefree boy discovers responsibility and purpose in life.' },
-{ img: '17.png', title: 'Hera Pheri', description: 'Three men get caught in a hilarious mess involving money and confusion.' },
-{ img: '18.png', title: 'Queen', description: 'A woman goes on a solo trip and finds herself after a broken wedding.' },
-{ img: '19.png', title: 'Student of the Year', description: 'College life filled with friendship, rivalry, love, and competition.' },
-{ img: '20.png', title: 'Veere Di Wedding', description: 'Four friends navigate friendship, love, and modern relationships.' },
-{ img: '21.png', title: 'A Gentleman', description: 'A man living a peaceful life gets pulled into unexpected action and danger.' },
-{ img: '22.png', title: 'Chennai Express', description: 'A fun-filled journey of love, action, and adventure across South India.' },
-{ img: '23.png', title: 'Main Tera Hero', description: 'A mischievous boy gets into crazy situations in love and life.' },
-];
+          // Shuffle all movies together
+          const shuffled = [...parodyData].sort(() => Math.random() - 0.5);
+          
+          let moviePointer = 0;
 
-          return (
+          return slideRows.map((slideItem, rowIndex) => (
             <React.Fragment key={`${category}-${slideItem.title.toLowerCase()}`}>
               <Card>
                 <Card.Title>{slideItem.title}</Card.Title>
                 <Card.Entities>
-                  {Array(5).fill(slideItem.data).flat().map((item, index) => {
-                    const movie = parodyData[index % parodyData.length];
-                    const parodySrc = `/images/parody/${movie.img}`;
+                  {(() => {
+                    const rowItems = Array(5).fill(slideItem.data).flat();
+                    const startIndex = moviePointer;
+                    moviePointer = (moviePointer + slideItem.data.length) % shuffled.length;
                     
-                    return (
-                      <Card.Item 
-                        key={`${item.docId}-${index}`} 
-                        item={{
-                              ...item,
-                              title: movie.title,
-                              description: movie.description,
-                              parodySrc
-                            }}
-                        index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} 
-                        $top10={slideItem.title.includes('Top 10')}
-                      >
-                        <Card.Image src={parodySrc} />
-                        <Card.Meta>
-                          <Card.Icons>
-                            <Header.Group>
-                              <Card.Icon $primary>
-                                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>
-                              </Card.Icon>
+                    return rowItems.map((item, index) => {
+                      const movieIndex = (startIndex + index) % shuffled.length;
+                      const movie = shuffled[movieIndex];
+                      const parodySrc = `/images/parody/${movie.img}`;
+                      
+                      return (
+                        <Card.Item 
+                          key={`${item.docId}-${index}`} 
+                          item={{
+                                ...item,
+                                ...movie,
+                                parodySrc
+                              }}
+                          index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} 
+                          $top10={slideItem.title.includes('Top 10')}
+                        >
+                          <Card.Image src={parodySrc} />
+                          <Card.Meta>
+                            <Card.Icons>
+                              <Header.Group>
+                                <Card.Icon $primary>
+                                  <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>
+                                </Card.Icon>
+                                <Card.Icon>
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                </Card.Icon>
+                                <Card.Icon>
+                                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9l-5 5m0-5l5 5"></path></svg>
+                                </Card.Icon>
+                              </Header.Group>
                               <Card.Icon>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg>
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
                               </Card.Icon>
-                              <Card.Icon>
-                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M14 9l-5 5m0-5l5 5"></path></svg>
-                              </Card.Icon>
-                            </Header.Group>
-                            <Card.Icon>
-                              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
-                            </Card.Icon>
-                          </Card.Icons>
-                          <Card.MetaData>
-                            <span style={{ color: '#46d369', marginRight: '10px' }}>98% Match</span>
-                            <Card.Badge>{item.maturity}+</Card.Badge>
-                            <span style={{ marginRight: '10px' }}>1h 38m</span>
-                            <Card.Badge>HD</Card.Badge>
-                          </Card.MetaData>
-                          <Card.Tags>
-                            <Card.Tag>Goofy</Card.Tag>
-                            <Card.Tag>{item.genre.charAt(0).toUpperCase() + item.genre.slice(1)}</Card.Tag>
-                            <Card.Tag>US</Card.Tag>
-                          </Card.Tags>
-                        </Card.Meta>
-                      </Card.Item>
-                    );
-                  })}
+                            </Card.Icons>
+                            <Card.MetaData>
+                              <span style={{ color: '#46d369', marginRight: '10px' }}>98% Match</span>
+                              <Card.Badge>{item.maturity}+</Card.Badge>
+                              <span style={{ marginRight: '10px' }}>1h 38m</span>
+                              <Card.Badge>HD</Card.Badge>
+                            </Card.MetaData>
+                            <Card.Tags>
+                              <Card.Tag>Goofy</Card.Tag>
+                              <Card.Tag>{item.genre.charAt(0).toUpperCase() + item.genre.slice(1)}</Card.Tag>
+                              <Card.Tag>US</Card.Tag>
+                            </Card.Tags>
+                          </Card.Meta>
+                        </Card.Item>
+                      );
+                    });
+                  })()}
                 </Card.Entities>
                 <Player>
                   <Card.Feature category={category}>
@@ -208,8 +194,8 @@ export function BrowseContainer({ slides }) {
               </Card>
               {slideItem.title.includes('Top 10') && <Countdown />}
             </React.Fragment>
-          );
-        })}
+          ));
+        })()}
       </Card.Group>
       <FooterContainer />
     </>

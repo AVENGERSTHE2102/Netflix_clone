@@ -20,7 +20,7 @@ export default function Countdown() {
   const containerRef = useRef(null);
 
   useEffect(() => {
-    const targetDate = new Date('2026-04-30T00:00:00');
+    const targetDate = new Date('2026-04-30T13:30:00');
 
     const updateTimer = () => {
       const now = new Date();

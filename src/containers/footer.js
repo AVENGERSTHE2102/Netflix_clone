@@ -37,7 +37,16 @@ export function FooterContainer() {
         </Footer.Column>
       </Footer.Row>
       <Footer.Break />
-      <Footer.Text>Compflix-Department of Computer Engineering</Footer.Text>
+      <Footer.Text>
+        Designed and maintained by{' '}
+        <Footer.Link href="https://www.linkedin.com/in/aditya-sabnis-a7a086375/" target="_blank" style={{ marginBottom: 0 }}>
+          Aditya Sabnis
+        </Footer.Link>
+        {' '}and{' '}
+        <Footer.Link href="https://www.linkedin.com/in/shravani-pokale-a875a2326/" target="_blank" style={{ marginBottom: 0 }}>
+          Shravani Pokale
+        </Footer.Link>
+      </Footer.Text>
 
     </Footer>
   );

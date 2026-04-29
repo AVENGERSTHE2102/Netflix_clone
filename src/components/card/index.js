@@ -168,9 +168,9 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
           </FeatureInfoLeft>
 
           <FeatureInfoRight>
-            <p><span>Cast:</span> Winona Ryder, David Harbour, Millie Bobby Brown, more</p>
-            <p><span>Genres:</span> {itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1)}, Sci-Fi TV, TV Horror</p>
-            <p><span>This show is:</span> Ominous, Scary, Exciting</p>
+            <p><span>Cast:</span> {itemFeature.cast || 'Winona Ryder, David Harbour, Millie Bobby Brown, more'}</p>
+            <p><span>Genres:</span> {itemFeature.realGenre || (itemFeature.genre.charAt(0).toUpperCase() + itemFeature.genre.slice(1))}</p>
+            <p><span>This show is:</span> {itemFeature.tags || 'Ominous, Scary, Exciting'}</p>
           </FeatureInfoRight>
         </FeatureInfoWrapper>
 
@@ -180,22 +180,6 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
               <h3>Episodes</h3>
               <span>Season 1</span>
             </EpisodeHeader>
-            {mockEpisodes.map((ep) => (
-              <EpisodeRow key={ep.id} onClick={() => {
-                setActiveVideo({ title: `${itemFeature.title} E${ep.id} ${ep.title}`, src: '/videos/bunny.mp4' });
-                setShowPlayer(true);
-              }}>
-                <EpisodeIndex>{ep.id}</EpisodeIndex>
-                <EpisodeImage src={ep.img} />
-                <EpisodeDetails>
-                  <EpisodeTitleRow>
-                    <h4>{ep.title}</h4>
-                    <span>{ep.duration}</span>
-                  </EpisodeTitleRow>
-                  <EpisodeDesc>{ep.desc}</EpisodeDesc>
-                </EpisodeDetails>
-              </EpisodeRow>
-            ))}
           </EpisodeContainer>
         )}
       </Feature>
