@@ -119,19 +119,50 @@ export function BrowseContainer({ slides }) {
             '23.png',
           ];
 
+          const parodyData = [
+  { img: '1.png', title: 'The Martian', description: 'An astronaut stranded on Mars fights to survive using science and resilience.' },
+  { img: '2.png', title: 'The Wolf of Wall Street', description: 'A stockbroker rises to extreme wealth through fraud, greed, and chaos.' },
+  { img: '3.png', title: 'Men in Black', description: 'Secret agents protect Earth from alien threats hidden among us.' },
+  { img: '4.png', title: 'Inception', description: 'A thief enters dreams to steal secrets in a mind-bending reality.' },
+  { img: '5.png', title: 'Harry Potter', description: 'A young wizard discovers magic, friendship, and his destiny.' },
+  { img: '6.png', title: 'Top Gun Maverick', description: 'A legendary pilot trains the next generation for a dangerous mission.' },
+  { img: '7.png', title: 'Sherlock Holmes', description: 'A brilliant detective solves complex mysteries with sharp intellect.' },
+  { img: '8.png', title: '3 Idiots', description: 'Three friends challenge the education system and chase true passion.' },
+  { img: '9.png', title: 'Bhaag Milkha Bhaag', description: 'The inspiring journey of India’s legendary sprinter.' },
+  { img: '10.png', title: 'Barfi!', description: 'A heartwarming story of love and innocence.' },
+  { img: '11.png', title: 'Dabangg', description: 'A fearless cop with swag takes on corruption.' },
+  { img: '12.png', title: 'Chhichhore', description: 'A story about friendship, failure, and life lessons.' },
+  { img: '13.png', title: 'Jab We Met', description: 'A lively girl changes a lost man’s life.' },
+  { img: '14.png', title: 'Munna Bhai MBBS', description: 'A gangster enters medical college to fulfill his father’s dream.' },
+  { img: '15.png', title: 'Fukrey', description: 'Friends get into chaos while chasing easy money.' },
+  { img: '16.png', title: 'Wake Up Sid', description: 'A carefree boy discovers responsibility and purpose in life.' },
+{ img: '17.png', title: 'Hera Pheri', description: 'Three men get caught in a hilarious mess involving money and confusion.' },
+{ img: '18.png', title: 'Queen', description: 'A woman goes on a solo trip and finds herself after a broken wedding.' },
+{ img: '19.png', title: 'Student of the Year', description: 'College life filled with friendship, rivalry, love, and competition.' },
+{ img: '20.png', title: 'Veere Di Wedding', description: 'Four friends navigate friendship, love, and modern relationships.' },
+{ img: '21.png', title: 'A Gentleman', description: 'A man living a peaceful life gets pulled into unexpected action and danger.' },
+{ img: '22.png', title: 'Chennai Express', description: 'A fun-filled journey of love, action, and adventure across South India.' },
+{ img: '23.png', title: 'Main Tera Hero', description: 'A mischievous boy gets into crazy situations in love and life.' },
+];
+
           return (
             <React.Fragment key={`${category}-${slideItem.title.toLowerCase()}`}>
               <Card>
                 <Card.Title>{slideItem.title}</Card.Title>
                 <Card.Entities>
                   {Array(5).fill(slideItem.data).flat().map((item, index) => {
-                    const parodyIndex = (index + slideItem.title.length) % parodyImages.length;
-                    const parodySrc = `/images/parody/${parodyImages[parodyIndex]}`;
+                    const movie = parodyData[index % parodyData.length];
+                    const parodySrc = `/images/parody/${movie.img}`;
                     
                     return (
                       <Card.Item 
                         key={`${item.docId}-${index}`} 
-                        item={{ ...item, parodySrc }} 
+                        item={{
+                              ...item,
+                              title: movie.title,
+                              description: movie.description,
+                              parodySrc
+                            }}
                         index={slideItem.title.includes('Top 10') ? (index % slideItem.data.length) : undefined} 
                         $top10={slideItem.title.includes('Top 10')}
                       >
