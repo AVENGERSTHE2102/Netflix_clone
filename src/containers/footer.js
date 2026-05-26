@@ -37,6 +37,12 @@ export function FooterContainer() {
         </Footer.Column>
       </Footer.Row>
       <Footer.Break />
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', textAlign: 'center', margin: '40px 0' }}>
+        <p style={{ color: '#757575', marginBottom: '15px', textTransform: 'uppercase', letterSpacing: '1px', fontSize: '14px', fontWeight: 'bold' }}>Official Hydration Partner</p>
+        <div style={{ backgroundColor: '#fff', padding: '16px 32px', borderRadius: '16px', display: 'inline-flex', alignItems: 'center', justifyContent: 'center', boxShadow: '0 8px 30px rgba(0,0,0,0.5)' }}>
+          <img src="/images/ocean.avif" alt="Hydration Partner" style={{ height: '100px', objectFit: 'contain' }} />
+        </div>
+      </div>
       <Footer.Text>
         Designed and maintained by{' '}
         <Footer.Link href="https://www.linkedin.com/in/aditya-sabnis-a7a086375/" target="_blank" style={{ marginBottom: 0 }}>

@@ -131,7 +131,10 @@ Card.Feature = function CardFeature({ children, category, ...restProps }) {
           </FeatureClose>
           <FeatureHeroControls>
             <PlayButton onClick={() => {
-              setActiveVideo({ title: itemFeature.title, src: '/videos/bunny.mp4' });
+              setActiveVideo({ 
+                title: itemFeature.title, 
+                src: itemFeature.videoSrc || '/videos/bunny.mp4' 
+              });
               setShowPlayer(true);
             }}>
               <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 3L19 12L5 21V3Z" /></svg>

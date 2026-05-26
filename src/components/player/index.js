@@ -138,8 +138,7 @@ Player.Video = function PlayerVideo({ src, ...restProps }) {
           <video 
             ref={videoRef} 
             id="compflix-player" 
-            src="/videos/test-video.mkv" 
-            type="video/mp4" 
+            src={activeVideo ? activeVideo.src : src} 
             onTimeUpdate={handleTimeUpdate}
             onEnded={() => setIsPlaying(false)}
             onClick={togglePlay}

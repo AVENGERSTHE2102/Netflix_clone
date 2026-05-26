@@ -34,11 +34,11 @@ export function BrowseContainer({ slides }) {
     { img: '5.png', title: 'Harry Potter', description: 'A young wizard discovers magic, friendship, and his destiny.', cast: 'Daniel Radcliffe, Emma Watson, Rupert Grint', realGenre: 'Fantasy, Adventure, Family', tags: 'Magical, Epic, Nostalgic' },
     { img: '6.png', title: 'Top Gun Maverick', description: 'A legendary pilot trains the next generation for a dangerous mission.', cast: 'Tom Cruise, Miles Teller, Jennifer Connelly', realGenre: 'Action, Drama', tags: 'Adrenaline, Heroic, Spectacular' },
     { img: '7.png', title: 'Sherlock Holmes', description: 'A brilliant detective solves complex mysteries with sharp intellect.', cast: 'Robert Downey Jr., Jude Law, Rachel McAdams', realGenre: 'Action, Adventure, Mystery', tags: 'Intellectual, Gritty, Witty' },
-    { img: '8.png', title: '3 Idiots', description: 'Three friends challenge the education system and chase true passion.', cast: 'Aamir Khan, R. Madhavan, Kareena Kapoor', realGenre: 'Comedy, Drama', tags: 'Heartfelt, Inspiring, Iconic' },
+    { img: '8.png', title: '3 Idiots', description: 'Three friends challenge the education system and chase true passion.', cast: 'Aamir Khan, R. Madhavan, Kareena Kapoor', realGenre: 'Comedy, Drama', tags: 'Heartfelt, Inspiring, Iconic', videoSrc: '/videos/facultyep.webm' },
     { img: '9.png', title: 'Bhaag Milkha Bhaag', description: 'The inspiring journey of India’s legendary sprinter.', cast: 'Farhan Akhtar, Sonam Kapoor, Divya Dutta', realGenre: 'Biography, Drama, Sports', tags: 'Determined, Powerful, Emotional' },
     { img: '10.png', title: 'Barfi!', description: 'A heartwarming story of love and innocence.', cast: 'Ranbir Kapoor, Priyanka Chopra, Ileana D\'Cruz', realGenre: 'Comedy, Drama, Romance', tags: 'Whimsical, Sweet, Poetic' },
     { img: '11.png', title: 'Dabangg', description: 'A fearless cop with swag takes on corruption.', cast: 'Salman Khan, Sonakshi Sinha, Sonu Sood', realGenre: 'Action, Comedy, Crime', tags: 'Massy, Stylized, Entertaining' },
-    { img: '12.png', title: 'Chhichhore', description: 'A story about friendship, failure, and life lessons.', cast: 'Sushant Singh Rajput, Shraddha Kapoor, Varun Sharma', realGenre: 'Comedy, Drama', tags: 'Nostalgic, Life-affirming, Fun' },
+    { img: '12.png', title: 'Chhichhore', description: 'A story about friendship, failure, and life lessons.', cast: 'Sushant Singh Rajput, Shraddha Kapoor, Varun Sharma', realGenre: 'Comedy, Drama', tags: 'Nostalgic, Life-affirming, Fun', videoSrc: '/videos/bunk_ep.webm' },
     { img: '13.png', title: 'Jab We Met', description: 'A lively girl changes a lost man’s life.', cast: 'Shahid Kapoor, Kareena Kapoor', realGenre: 'Comedy, Drama, Romance', tags: 'Bubbly, Romantic, Feel-good' },
     { img: '14.png', title: 'Munna Bhai MBBS', description: 'A gangster enters medical college to fulfill his father’s dream.', cast: 'Sanjay Dutt, Arshad Warsi, Boman Irani', realGenre: 'Comedy, Drama', tags: 'Hilarious, Touching, Classic' },
     { img: '15.png', title: 'Fukrey', description: 'Friends get into chaos while chasing easy money.', cast: 'Pulkit Samrat, Varun Sharma, Ali Fazal', realGenre: 'Comedy, Drama', tags: 'Quirky, Street-smart, Laugh-out-loud' },
@@ -77,6 +77,12 @@ export function BrowseContainer({ slides }) {
           <Header.Group>
             <Header.Hamburger open={menuOpen} setOpen={setMenuOpen} />
             <Header.Logo to={ROUTES.HOME} src="/images/logo.png" alt="Compflix" $height="80px" />
+            <div style={{ display: 'flex', alignItems: 'center', marginLeft: '40px', marginRight: '40px' }}>
+              <span style={{ color: '#e5e5e5', fontSize: '12px', fontWeight: 'bold', textTransform: 'uppercase', letterSpacing: '1px', marginRight: '12px' }}>Hydration Partner</span>
+              <div style={{ backgroundColor: '#fff', padding: '6px 12px', borderRadius: '8px', display: 'flex', alignItems: 'center' }}>
+                <img src="/images/ocean.avif" alt="Hydration Partner" style={{ height: '35px', objectFit: 'contain' }} />
+              </div>
+            </div>
             <Header.Group $hideMobile>
               <Header.TextLink active="true" onClick={() => setCategory('series')}>
                 Home
@@ -242,6 +248,48 @@ export function BrowseContainer({ slides }) {
                   </Player>
                 </Card>
                 {slideItem.title.includes('Top 10') && <Countdown />}
+                {slideItem.title.includes('Top 10') && (
+                  <div style={{ margin: '50px 0', padding: '0 50px' }}>
+                    <div style={{
+                      position: 'relative',
+                      background: 'linear-gradient(135deg, #020e1a 0%, #041626 50%, #020c16 100%)',
+                      borderRadius: '24px',
+                      padding: '70px 80px',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'flex-start',
+                      gap: '0',
+                      overflow: 'hidden',
+                      border: '1px solid rgba(0,160,255,0.25)',
+                      boxShadow: '0 30px 80px rgba(0,0,0,0.9), inset 0 1px 0 rgba(255,255,255,0.06)'
+                    }}>
+                      {/* Ocean wave background */}
+                      <div style={{ position: 'absolute', top: 0, left: 0, right: 0, bottom: 0, background: 'radial-gradient(ellipse at 60% 50%, rgba(0,100,200,0.2) 0%, transparent 65%)', pointerEvents: 'none' }} />
+                      <div style={{ position: 'absolute', top: '-100px', left: '30%', width: '400px', height: '400px', borderRadius: '50%', background: 'radial-gradient(circle, rgba(0,180,255,0.07) 0%, transparent 70%)', pointerEvents: 'none' }} />
+
+                      {/* Text content */}
+                      <div style={{ zIndex: 1 }}>
+                        <p style={{ color: '#00aaff', fontSize: '12px', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '5px', margin: '0 0 18px 0' }}>Official Hydration Partner</p>
+                        <h2 style={{ margin: '0 0 8px 0', lineHeight: 1.0 }}>
+                          <span style={{ color: '#ffffff', fontSize: '4rem', fontWeight: '900', display: 'block' }}>Drink</span>
+                          <span style={{ color: '#00aaff', fontSize: '5.5rem', fontWeight: '900', letterSpacing: '-2px', display: 'block', textShadow: '0 0 40px rgba(0,170,255,0.6), 0 0 80px rgba(0,170,255,0.2)' }}>O'cean</span>
+                        </h2>
+                        <p style={{ color: '#7aadcc', fontSize: '1.1rem', margin: '20px 0 36px 0', maxWidth: '400px', lineHeight: 1.7 }}>Pure hydration for your binge-watching sessions. Stay refreshed, stay in the moment.</p>
+                        <div style={{ display: 'inline-flex', alignItems: 'center', backgroundColor: 'rgba(0,170,255,0.12)', border: '1px solid rgba(0,170,255,0.4)', padding: '14px 28px', borderRadius: '40px' }}>
+                          <span style={{ color: '#00aaff', fontSize: '13px', fontWeight: '800', letterSpacing: '2.5px', textTransform: 'uppercase' }}>Drink More. Watch More.</span>
+                        </div>
+                      </div>
+
+                      {/* Separator */}
+                      <div style={{ zIndex: 1, width: '1px', height: '270px', backgroundColor: 'rgba(0,160,255,0.25)', margin: '0 60px', flexShrink: 0 }} />
+
+                      {/* Logo */}
+                      <div style={{ zIndex: 1, flexShrink: 0, backgroundColor: '#fff', padding: '28px 40px', borderRadius: '22px', boxShadow: '0 16px 50px rgba(0,0,0,0.7), 0 0 60px rgba(0,160,255,0.25)', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                        <img src="/images/ocean.avif" alt="Drink O'cean" style={{ height: '225px', width: '330px', objectFit: 'cover', objectPosition: 'center', borderRadius: '10px' }} />
+                      </div>
+                    </div>
+                  </div>
+                )}
               </React.Fragment>
             ));
           })()
